@@ -15,8 +15,12 @@ namespace Inscripciones.Models
             //               User Id = sa; Password = 123;
             //               MultipleActiveResultSets = True; 
             //               Encrypt=false ") ;
-            string cadenaConexion = "Server=127.0.0.1;Database=inscripcioncontext;User=root;Password=milton;";
-            
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string cadenaConexion = configuration.GetConnectionString("mysqlremoto");
+
             optionsBuilder.UseMySql(cadenaConexion,
             ServerVersion.AutoDetect(cadenaConexion));
         }
