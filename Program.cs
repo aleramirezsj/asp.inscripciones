@@ -11,9 +11,10 @@ var configuration = new ConfigurationBuilder()
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 //builder.Services.AddDbContext<InscripcionesContext>(options => options.UseSqlServer(configuration.GetConnectionString("sqlserver")));
-string cadenaConexion = "Server=127.0.0.1;Database=inscripcioncontext;User=root;Password=milton;";
-builder.Services.AddDbContext<InscripcionesContext>(options => options.UseMySql(cadenaConexion,
-            ServerVersion.AutoDetect(cadenaConexion)));
+string cadenaConexion = configuration.GetConnectionString("mysql") ;
+builder.Services.AddDbContext<InscripcionesContext>(
+    options => options.UseMySql(cadenaConexion,
+                                ServerVersion.AutoDetect(cadenaConexion)));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
