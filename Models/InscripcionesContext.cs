@@ -10,19 +10,15 @@ namespace Inscripciones.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;      
-            //               Database=InscripcionesContext;
-            //               User Id = sa; Password = 123;
-            //               MultipleActiveResultSets = True; 
-            //               Encrypt=false ") ;
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
 
             string cadenaConexion = configuration.GetConnectionString("mysqlremoto");
-
+            
+            //optionsBuilder.UseSqlServer(cadenaConexion) ;
             optionsBuilder.UseMySql(cadenaConexion,
-            ServerVersion.AutoDetect(cadenaConexion));
+                                    ServerVersion.AutoDetect(cadenaConexion));
         }
 
         public virtual DbSet<Alumno> alumnos { get; set; }
