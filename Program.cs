@@ -14,7 +14,12 @@ builder.Services.AddControllersWithViews();
 string cadenaConexion = configuration.GetConnectionString("mysqlremoto") ;
 builder.Services.AddDbContext<InscripcionesContext>(
     options => options.UseMySql(cadenaConexion,
-                                ServerVersion.AutoDetect(cadenaConexion)));
+                                ServerVersion.AutoDetect(cadenaConexion),
+                    options => options.EnableRetryOnFailure(
+                                        maxRetryCount: 5,
+                                        maxRetryDelay: System.TimeSpan.FromSeconds(30),
+                                       errorNumbersToAdd: null)
+                                ));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
