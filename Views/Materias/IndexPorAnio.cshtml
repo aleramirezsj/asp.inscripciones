@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Inscripciones.Models.Materia>
+
+
+@{
+    ViewData["Title"] = "Index";
+    int idanio = ViewBag.IdAnio;
+}
+
+<h1>Mostrando Materias del año seleccionado</h1>
+
+<p>
+    <a asp-action="CreateConAnio" asp-route-idanio="@idanio">Create New</a>
+</p>
+<form asp-controller="Materias" asp-action="IndexPorAnio" method="get">
+    <div class="form-group">
+        <label asp-for="@idanio" class="control-label"></label>
+        <select asp-for="@idanio" class="form-control" asp-items="ViewBag.AniosCarreras" onchange="this.form.submit()"></select>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnioCarrera)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnioCarrera.AñoYCarrera)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

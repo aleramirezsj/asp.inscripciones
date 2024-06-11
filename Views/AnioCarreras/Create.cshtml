@@ -1,4 +1,4 @@
-﻿@model Inscripciones.Models.Inscripcion
+﻿@model Inscripciones.Models.AnioCarrera
 
 @{
     ViewData["Title"] = "Create";
@@ -6,20 +6,16 @@
 
 <h1>Create</h1>
 
-<h4>Inscripcion</h4>
+<h4>AnioCarrera</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Fecha" class="control-label"></label>
-                <input asp-for="Fecha" class="form-control" />
-                <span asp-validation-for="Fecha" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AlumnoId" class="control-label"></label>
-                <select asp-for="AlumnoId" class ="form-control" asp-items="ViewBag.Alumnos"></select>
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CarreraId" class="control-label"></label>

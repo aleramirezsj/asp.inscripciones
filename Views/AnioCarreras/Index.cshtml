@@ -1,19 +1,22 @@
-﻿@model IEnumerable<Inscripciones.Models.Carrera>
+﻿@model IEnumerable<Inscripciones.Models.AnioCarrera>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Lista de carreras</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Crear nueva carrera</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carrera)
             </th>
             <th></th>
         </tr>
@@ -25,7 +28,9 @@
                 @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                    <a asp-controller="AnioCarreras" asp-action="IndexPorCarrera" asp-route-idcarrera="@item.Id">Años</a>
+                @Html.DisplayFor(modelItem => item.Carrera.Nombre)
+            </td>
+            <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
