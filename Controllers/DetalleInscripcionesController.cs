@@ -30,7 +30,7 @@ namespace Inscripciones.Controllers
         // GET: DetalleInscripciones
         public async Task<IActionResult> IndexPorInscripcion(int? idinscripcion=1)
         {
-            var inscripcionesContext = _context.detallesinscripciones.Include(d => d.Inscripcion).ThenInclude(d => d.Alumno).Include(d => d.Materia).Where(d=>d.InscripcionId.Equals(idinscripcion));
+            var inscripcionesContext = _context.detallesinscripciones.Include(d => d.Materia).ThenInclude(m=>m.AnioCarrera).ThenInclude(a=>a.Carrera).Where(d=>d.InscripcionId.Equals(idinscripcion)).OrderBy(d=>d.Materia.AnioCarreraId);
             ViewData["Inscripciones"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto",idinscripcion);
             ViewData["IdInscripcion"] = idinscripcion;
             return View(await inscripcionesContext.ToListAsync());
@@ -70,7 +70,7 @@ namespace Inscripciones.Controllers
             ViewData["Inscripciones"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto",idinscripcion);
             Inscripcion inscripcion = _context.inscripciones.FirstOrDefault(i => i.Id == idinscripcion);
              idaniocarrera??=_context.anioscarreras.Where(i => i.CarreraId == inscripcion.CarreraId).FirstOrDefault().Id;
-            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a=>a.Carrera).Where(_i => _i.CarreraId == inscripcion.CarreraId), idaniocarrera);
+            ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a=>a.Carrera).Where(_i => _i.CarreraId == inscripcion.CarreraId), "Id", "AñoYCarrera", idaniocarrera);
             ViewData["IdInscripcion"]=idinscripcion;
             ViewData["IdAnioCarrera"] = idaniocarrera;
             ViewData["MateriaId"] = new SelectList(_context.materias.Where(m=>m.AnioCarreraId.Equals(idaniocarrera)), "Id", "Nombre");
@@ -88,9 +88,26 @@ namespace Inscripciones.Controllers
             {
                 _context.Add(detalleInscripcion);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(IndexPorInscripcion));
             }
             ViewData["InscripcionId"] = new SelectList(_context.inscripciones.Include(i=>i.Alumno), "Id", "Inscripto", detalleInscripcion.InscripcionId);
+            ViewData["MateriaId"] = new SelectList(_context.materias, "Id", "Nombre", detalleInscripcion.MateriaId);
+            return View(detalleInscripcion);
+        }
+        // POST: DetalleInscripciones/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateConInscripcion([Bind("Id,ModalidadCursado,InscripcionId,MateriaId")] DetalleInscripcion detalleInscripcion)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(detalleInscripcion);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(IndexPorInscripcion), new {idinscripcion=detalleInscripcion.InscripcionId});
+            }
+            ViewData["InscripcionId"] = new SelectList(_context.inscripciones.Include(i => i.Alumno), "Id", "Inscripto", detalleInscripcion.InscripcionId);
             ViewData["MateriaId"] = new SelectList(_context.materias, "Id", "Nombre", detalleInscripcion.MateriaId);
             return View(detalleInscripcion);
         }

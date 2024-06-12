@@ -15,9 +15,9 @@
         <form asp-action="CreateConInscripcion" asp-route-idaniocarrera="@idaniocarrera" method="get">
             <div class="form-group">
                 <label class="control-label"></label>
-                <select class="form-control" asp-items="ViewBag.Inscripciones" disabled></select>
+                <select class="form-control" asp-items=" ViewBag.Inscripciones" disabled></select>
             </div>
-            <input type="hidden" asp-for="InscripcionId" value="@idinscripcion" />
+            <input type="hidden" asp-for="@idinscripcion" value="@idinscripcion" />
             <div class="form-group">
                 <label class="control-label"></label>
                 <select asp-for="@idaniocarrera" class="form-control" asp-items="ViewBag.AniosCarreras" onchange="this.form.submit()"></select>
