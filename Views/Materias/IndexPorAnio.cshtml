@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Index";
     int idanio = ViewBag.IdAnio;
+    int idcarrera = ViewBag.IdCarrera;
 }
 
 <h1>Mostrando Materias del año seleccionado</h1>
@@ -47,3 +48,4 @@
 }
     </tbody>
 </table>
+<a asp-controller="AnioCarreras" asp-action="IndexPorCarrera" asp-route-idcarrera="@idcarrera">Volver</a>

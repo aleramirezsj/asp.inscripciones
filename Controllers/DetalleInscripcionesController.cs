@@ -73,7 +73,8 @@ namespace Inscripciones.Controllers
             ViewData["AniosCarreras"] = new SelectList(_context.anioscarreras.Include(a=>a.Carrera).Where(_i => _i.CarreraId == inscripcion.CarreraId), "Id", "AñoYCarrera", idaniocarrera);
             ViewData["IdInscripcion"]=idinscripcion;
             ViewData["IdAnioCarrera"] = idaniocarrera;
-            ViewData["MateriaId"] = new SelectList(_context.materias.Where(m=>m.AnioCarreraId.Equals(idaniocarrera)), "Id", "Nombre");
+            ViewData["Materias"] = new SelectList(_context.materias.Where(m=>m.AnioCarreraId.Equals(idaniocarrera)), "Id", "Nombre");
+            ViewData["DetallesInscripciones"] = _context.detallesinscripciones.Include(d => d.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(d => d.InscripcionId.Equals(idinscripcion)).OrderBy(d => d.Materia.AnioCarreraId);
             return View();
         }
 
