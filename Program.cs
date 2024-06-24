@@ -29,9 +29,9 @@ builder.Services.AddSwaggerGen();
 // Configurar una política de CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin",
+    options.AddPolicy("AllowAll",
         builder => builder
-            .WithOrigins("http://localhost") // Especifica los orígenes permitidos
+            .AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
@@ -61,6 +61,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.UseCors("AllowAll");
+
 
 app.MapControllerRoute(
     name: "default",
