@@ -41,7 +41,7 @@
                     @Html.DisplayFor(modelItem => item.ModalidadCursado)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Materia.AnioCarrera.AñoYCarrera)
+                    @Html.DisplayFor(modelItem => item.Materia.AnioCarrera.Nombre)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Materia.Nombre)
@@ -80,6 +80,9 @@
             <div class="form-group">
                 <label asp-for="MateriaId" class="control-label"></label>
                 <select asp-for="MateriaId" class ="form-control" asp-items="ViewBag.Materias"></select>
+            </div>
+            <div class=" alert alert-danger">
+                <p>@ViewData["MensajeError"]</p>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

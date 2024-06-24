@@ -22,8 +22,8 @@ namespace Inscripciones.Controllers
         public async Task<IActionResult> Index()
         {
 
-            var inscripcionesContext = _context.inscripciones.Include(i => i.Alumno).Include(i => i.Carrera);
-            return View(await inscripcionesContext.ToListAsync());
+            var inscripciones = _context.inscripciones.Include(i => i.Alumno).Include(i => i.Carrera);
+            return View(await inscripciones.ToListAsync());
         }
 
         // GET: Inscripciones/Details/5

@@ -14,7 +14,7 @@
 <form asp-controller="AnioCarreras" asp-action="IndexPorCarrera" method="post">
     <div class="form-group">
         <label asp-for="@idcarrera" class="control-label"></label>
-        <select asp-for="@idcarrera" class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
+        <select asp-for="@idcarrera" disabled class="form-control" asp-items="ViewBag.Carreras" onchange="this.form.submit()"></select>
     </div>
 </form>
 <table class="table">
