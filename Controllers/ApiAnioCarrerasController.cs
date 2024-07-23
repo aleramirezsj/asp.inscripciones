@@ -22,8 +22,12 @@ namespace Inscripciones.Controllers
 
         // GET: api/ApiAnioCarreras
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnioCarrera>>> Getanioscarreras()
+        public async Task<ActionResult<IEnumerable<AnioCarrera>>> Getanioscarreras([FromQuery] int? idCarrera )
         {
+            if(idCarrera != null)
+            {
+                return await _context.anioscarreras.Where(a=>a.CarreraId.Equals(idCarrera)).ToListAsync();
+            }
             return await _context.anioscarreras.ToListAsync();
         }
 
