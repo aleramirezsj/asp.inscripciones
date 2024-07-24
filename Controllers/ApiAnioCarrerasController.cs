@@ -26,7 +26,7 @@ namespace Inscripciones.Controllers
         {
             if(idCarrera != null)
             {
-                return await _context.anioscarreras.Where(a=>a.CarreraId.Equals(idCarrera)).ToListAsync();
+                return await _context.anioscarreras.Include(a=>a.Carrera).Where(a=>a.CarreraId.Equals(idCarrera)).ToListAsync();
             }
             return await _context.anioscarreras.ToListAsync();
         }
