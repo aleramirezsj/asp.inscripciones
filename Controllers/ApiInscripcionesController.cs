@@ -24,7 +24,7 @@ namespace Inscripciones.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Inscripcion>>> Getinscripciones()
         {
-            return await _context.inscripciones.ToListAsync();
+            return await _context.inscripciones.Include(i=>i.Carrera).Include(i=>i.Alumno).ToListAsync();
         }
 
         // GET: api/ApiInscripciones/5
