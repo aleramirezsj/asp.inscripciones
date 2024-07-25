@@ -35,7 +35,7 @@ namespace Inscripciones.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DetalleInscripcion>> GetDetalleInscripcion(int id)
         {
-            var detalleInscripcion = await _context.detallesinscripciones.FindAsync(id);
+            var detalleInscripcion = await _context.detallesinscripciones.Include(d=>d.Materia).Where(d=>d.Id.Equals(id)).FirstOrDefaultAsync();
 
             if (detalleInscripcion == null)
             {
