@@ -22,8 +22,12 @@ namespace Inscripciones.Controllers
 
         // GET: api/ApiDetalleInscripciones
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> Getdetallesinscripciones()
+        public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> Getdetallesinscripciones([FromQuery] int? idInscripcion)
         {
+            if(idInscripcion != null)
+            {
+                return await _context.detallesinscripciones.Include(d=>d.Materia).Where(d=>d.InscripcionId.Equals(idInscripcion)).ToListAsync();
+            }
             return await _context.detallesinscripciones.ToListAsync();
         }
 
