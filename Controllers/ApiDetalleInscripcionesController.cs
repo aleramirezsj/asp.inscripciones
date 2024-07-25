@@ -26,7 +26,7 @@ namespace Inscripciones.Controllers
         {
             if(idInscripcion != null)
             {
-                return await _context.detallesinscripciones.Include(d=>d.Materia).ThenInclude(m=>m.AnioCarrera).Where(d=>d.InscripcionId.Equals(idInscripcion)).ToListAsync();
+                return await _context.detallesinscripciones.Include(d=>d.Materia).ThenInclude(m=>m.AnioCarrera).Where(d=>d.InscripcionId.Equals(idInscripcion)).OrderBy(d => d.Materia.AnioCarreraId).ToListAsync();
             }
             return await _context.detallesinscripciones.ToListAsync();
         }
