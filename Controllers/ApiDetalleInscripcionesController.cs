@@ -56,6 +56,7 @@ namespace Inscripciones.Controllers
             }
 
             _context.Entry(detalleInscripcion).State = EntityState.Modified;
+            
 
             try
             {
@@ -106,6 +107,17 @@ namespace Inscripciones.Controllers
         private bool DetalleInscripcionExists(int id)
         {
             return _context.detallesinscripciones.Any(e => e.Id == id);
+        }
+
+        [HttpGet("checkduplicado")]
+        public async Task<IActionResult> CheckDuplicado(int idInscripcion, int idMateria)
+        {
+            bool isDuplicate = await _context.detallesinscripciones.AnyAsync(d=>d.InscripcionId==idInscripcion &&d.MateriaId==idMateria);
+            if (isDuplicate)
+            {
+                return Conflict("ya está inscrito en esta materia.");
+            }
+            return Ok();
         }
     }
 }
