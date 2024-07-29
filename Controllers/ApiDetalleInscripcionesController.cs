@@ -56,6 +56,7 @@ namespace Inscripciones.Controllers
             }
 
             _context.Entry(detalleInscripcion).State = EntityState.Modified;
+            
 
             try
             {
@@ -106,6 +107,12 @@ namespace Inscripciones.Controllers
         private bool DetalleInscripcionExists(int id)
         {
             return _context.detallesinscripciones.Any(e => e.Id == id);
+        }
+        public bool DetalleInscripcionExists(DetalleInscripcion detalleInscripcion)
+        {
+            return _context.detallesinscripciones.Any(e => e.InscripcionId==detalleInscripcion.InscripcionId &&
+                                                      e.MateriaId==detalleInscripcion.MateriaId);
+            ;
         }
     }
 }
