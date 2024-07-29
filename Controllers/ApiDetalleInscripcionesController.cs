@@ -109,7 +109,7 @@ namespace Inscripciones.Controllers
             return _context.detallesinscripciones.Any(e => e.Id == id);
         }
 
-        [HttpGet("checkduplicado")]
+        [HttpGet("check-duplicado")]
         public async Task<IActionResult> CheckDuplicado(int idInscripcion, int idMateria)
         {
             bool isDuplicate = await _context.detallesinscripciones.AnyAsync(d=>d.InscripcionId==idInscripcion &&d.MateriaId==idMateria);
