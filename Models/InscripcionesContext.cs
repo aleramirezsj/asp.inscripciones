@@ -83,8 +83,6 @@ namespace Inscripciones.Models
                 ac27, ac28);
             #endregion
 
-        
-
             #region Datos semilla de Materias
 
             // PROFESORADO DE EDUCACIÓN SECUNDARIA EN ECONOMÍA
@@ -426,13 +424,11 @@ namespace Inscripciones.Models
             #endregion
             #endregion
 
-
             #region datos semillas alumnos
             var ale = new Alumno { Id = 1, ApellidoNombre = "Rubén Alejandro Ramirez", Email = "aleramirezsj@gmail.com", Direccion = "Bv Roque Saenz Peña 2942", Telefono = "15447106" };
 
             modelBuilder.Entity<Alumno>().HasData(ale);
             #endregion
-
 
             #region definición de filtros de eliminación
             // (este código no lo habilitamos todavía porque es cuando agregamos un campo Eliminado a las tablas y modificamos los
@@ -444,6 +440,108 @@ namespace Inscripciones.Models
             //modelBuilder.Entity<Carrera>().HasQueryFilter(m => !m.Eliminado);
             //modelBuilder.Entity<Materia>().HasQueryFilter(m => !m.Eliminado);
             #endregion
+
+            #region datos semillas turnosExamenes
+            var turno = new TurnoExamen { Id = 1, Nombre = "Julio/Agosto 2024" };
+
+            modelBuilder.Entity<TurnoExamen>().HasData(turno);
+            #endregion
+            #region datos semillas AniosLectivos
+            var anio = new AnioLectivo { Id = 1, Nombre = "2024" };
+
+            modelBuilder.Entity<AnioLectivo>().HasData(anio);
+            #endregion
+            #region datos semillas Docentes
+            modelBuilder.Entity<Docente>().HasData(
+                new Docente { Id = 1, Nombre = "M. Aimar" },
+                new Docente { Id = 2, Nombre = "E. Albaristo" },
+                new Docente { Id = 3, Nombre = "A. Alesso" },
+                new Docente { Id = 4, Nombre = "M. Alesso" },
+                new Docente { Id = 5, Nombre = "P. Arnolfo" },
+                new Docente { Id = 6, Nombre = "D. Bazan" },
+                new Docente { Id = 7, Nombre = "Blanche" },
+                new Docente { Id = 8, Nombre = "J. Bogni" },
+                new Docente { Id = 9, Nombre = "D. Brondino" },
+                new Docente { Id = 10, Nombre = "G. Brussa" },
+                new Docente { Id = 11, Nombre = "MB. Buceta" },
+                new Docente { Id = 12, Nombre = "F. Bueno" },
+                new Docente { Id = 13, Nombre = "G. Cainero" },
+                new Docente { Id = 14, Nombre = "M. Calvo Tobias" },
+                new Docente { Id = 15, Nombre = "J. Cavallini" },
+                new Docente { Id = 16, Nombre = "L. Chauderón" },
+                new Docente { Id = 17, Nombre = "V. Chelini" },
+                new Docente { Id = 18, Nombre = "R. Corradi" },
+                new Docente { Id = 19, Nombre = "C. Dalesio" },
+                new Docente { Id = 20, Nombre = "C. Dellaferrera" },
+                new Docente { Id = 21, Nombre = "O. Degiorgio" },
+                new Docente { Id = 22, Nombre = "M. Della Rosa" },
+                new Docente { Id = 23, Nombre = "M. Doglioli" },
+                new Docente { Id = 24, Nombre = "C. Duran" },
+                new Docente { Id = 25, Nombre = "F. Espru" },
+                new Docente { Id = 26, Nombre = "M. Ferrero" },
+                new Docente { Id = 27, Nombre = "N. Ferri" },
+                new Docente { Id = 28, Nombre = "M. Ferreyra" },
+                new Docente { Id = 29, Nombre = "JP. Gaido" },
+                new Docente { Id = 30, Nombre = "M. Galmes" },
+                new Docente { Id = 31, Nombre = "A. Genero" },
+                new Docente { Id = 32, Nombre = "V. Gomez" },
+                new Docente { Id = 33, Nombre = "L. Gongora" },
+                new Docente { Id = 34, Nombre = "MC. Gretter" },
+                new Docente { Id = 35, Nombre = "S. Grosso" },
+                new Docente { Id = 36, Nombre = "R. Imhof" },
+                new Docente { Id = 37, Nombre = "M. Imperiale" },
+                new Docente { Id = 38, Nombre = "L. Lodi" },
+                new Docente { Id = 39, Nombre = "F. Lovino" },
+                new Docente { Id = 40, Nombre = "J. Mancilla" },
+                new Docente { Id = 41, Nombre = "S. Manattini" },
+                new Docente { Id = 42, Nombre = "A. Marenoni" },
+                new Docente { Id = 43, Nombre = "G. Martinez" },
+                new Docente { Id = 44, Nombre = "M. Mendoza" },
+                new Docente { Id = 45, Nombre = "A. Miñoz" },
+                new Docente { Id = 46, Nombre = "T. Molina" },
+                new Docente { Id = 47, Nombre = "MI. Monzón" },
+                new Docente { Id = 48, Nombre = "R. Nasimbera" },
+                new Docente { Id = 49, Nombre = "L. Ortiz" },
+                new Docente { Id = 50, Nombre = "M. Paredes" },
+                new Docente { Id = 51, Nombre = "F. Pedrazzoli" },
+                new Docente { Id = 52, Nombre = "S. Pereyra" },
+                new Docente { Id = 53, Nombre = "S. Peressin" },
+                new Docente { Id = 54, Nombre = "C. Prida" },
+                new Docente { Id = 55, Nombre = "D. Puccio" },
+                new Docente { Id = 56, Nombre = "E. Quaglia" },
+                new Docente { Id = 57, Nombre = "RA. Ramirez" },
+                new Docente { Id = 58, Nombre = "D. Renteria" },
+                new Docente { Id = 59, Nombre = "J. Rodriguez Quain" },
+                new Docente { Id = 60, Nombre = "E. Rosso" },
+                new Docente { Id = 61, Nombre = "R. Sanchez" },
+                new Docente { Id = 62, Nombre = "P. Sandoval" },
+                new Docente { Id = 63, Nombre = "I. Sancho" },
+                new Docente { Id = 64, Nombre = "J. Sara" },
+                new Docente { Id = 65, Nombre = "J. Strada" },
+                new Docente { Id = 66, Nombre = "C. Tovar" },
+                new Docente { Id = 67, Nombre = "V. Travesani" },
+                new Docente { Id = 68, Nombre = "C. Tregnaghi" },
+                new Docente { Id = 69, Nombre = "MR. Tschopp" },
+                new Docente { Id = 70, Nombre = "A. Verzzali" },
+                new Docente { Id = 71, Nombre = "E. Vigniatti" },
+                new Docente { Id = 72, Nombre = "MF. Villa" }
+        );
+            #endregion
+            #region datos semillas Mesas de examenes
+            var mesa = new MesaExamen { Id = 1, Llamado1 = DateTime.Today, Llamado2 = DateTime.Today.AddDays(15), Horario = "18hs", MateriaId = 1, TurnoExamenId = 1 };
+
+            modelBuilder.Entity<MesaExamen>().HasData(mesa);
+            #endregion
+            #region datos semillas Detalle Mesas de examenes
+            var mesa1 = new[]
+            {
+                new DetalleMesaExamen { Id = 1, MesaExamenId=1, DocenteId=1, TipoIntegrante=TipoIntegranteEnum.Presidente },
+                new DetalleMesaExamen { Id = 2, MesaExamenId = 1, DocenteId = 2, TipoIntegrante = TipoIntegranteEnum.Vocal },
+                new DetalleMesaExamen { Id = 3, MesaExamenId = 1, DocenteId = 3, TipoIntegrante = TipoIntegranteEnum.Vocal },
+                new DetalleMesaExamen { Id = 4, MesaExamenId = 1, DocenteId = 4, TipoIntegrante = TipoIntegranteEnum.Suplente }
+            };
+            modelBuilder.Entity<DetalleMesaExamen>().HasData(mesa1);
+            #endregion
         }
 
         public virtual DbSet<Alumno> alumnos { get; set; }
@@ -452,6 +550,11 @@ namespace Inscripciones.Models
         public virtual DbSet<AnioCarrera> anioscarreras { get; set; }
         public virtual DbSet<Materia> materias { get; set; }
         public virtual DbSet<DetalleInscripcion> detallesinscripciones { get; set; }
+        public virtual DbSet<TurnoExamen> turnosexamenes { get; set; }
+        public virtual DbSet<AnioLectivo> anioslectivos { get; set; }
+        public virtual DbSet<Docente> docentes { get; set; }
+        public virtual DbSet<MesaExamen> mesasexamenes { get; set; }
+        public virtual DbSet<DetalleMesaExamen> detallesmesasexamenes { get; set; }
 
 
     }

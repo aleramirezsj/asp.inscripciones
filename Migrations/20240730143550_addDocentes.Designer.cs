@@ -4,6 +4,7 @@ using Inscripciones.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inscripciones.Migrations
 {
     [DbContext(typeof(InscripcionesContext))]
-    partial class InscripcionesContextModelSnapshot : ModelSnapshot
+    [Migration("20240730143550_addDocentes")]
+    partial class addDocentes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -365,62 +368,6 @@ namespace Inscripciones.Migrations
                     b.HasIndex("MateriaId");
 
                     b.ToTable("detallesinscripciones");
-                });
-
-            modelBuilder.Entity("Inscripciones.Models.DetalleMesaExamen", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DocenteId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MesaExamenId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TipoIntegrante")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DocenteId");
-
-                    b.HasIndex("MesaExamenId");
-
-                    b.ToTable("detallesmesasexamenes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DocenteId = 1,
-                            MesaExamenId = 1,
-                            TipoIntegrante = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DocenteId = 2,
-                            MesaExamenId = 1,
-                            TipoIntegrante = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DocenteId = 3,
-                            MesaExamenId = 1,
-                            TipoIntegrante = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            DocenteId = 4,
-                            MesaExamenId = 1,
-                            TipoIntegrante = 2
-                        });
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Docente", b =>
@@ -2430,50 +2377,6 @@ namespace Inscripciones.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Inscripciones.Models.MesaExamen", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Horario")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime>("Llamado1")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("Llamado2")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<int>("MateriaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TurnoExamenId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MateriaId");
-
-                    b.HasIndex("TurnoExamenId");
-
-                    b.ToTable("mesasexamenes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Horario = "18hs",
-                            Llamado1 = new DateTime(2024, 7, 30, 0, 0, 0, 0, DateTimeKind.Local),
-                            Llamado2 = new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Local),
-                            MateriaId = 1,
-                            TurnoExamenId = 1
-                        });
-                });
-
             modelBuilder.Entity("Inscripciones.Models.TurnoExamen", b =>
                 {
                     b.Property<int>("Id")
@@ -2528,25 +2431,6 @@ namespace Inscripciones.Migrations
                     b.Navigation("Materia");
                 });
 
-            modelBuilder.Entity("Inscripciones.Models.DetalleMesaExamen", b =>
-                {
-                    b.HasOne("Inscripciones.Models.Docente", "Docente")
-                        .WithMany()
-                        .HasForeignKey("DocenteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Inscripciones.Models.MesaExamen", "MesaExamen")
-                        .WithMany()
-                        .HasForeignKey("MesaExamenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Docente");
-
-                    b.Navigation("MesaExamen");
-                });
-
             modelBuilder.Entity("Inscripciones.Models.Inscripcion", b =>
                 {
                     b.HasOne("Inscripciones.Models.Alumno", "Alumno")
@@ -2575,25 +2459,6 @@ namespace Inscripciones.Migrations
                         .IsRequired();
 
                     b.Navigation("AnioCarrera");
-                });
-
-            modelBuilder.Entity("Inscripciones.Models.MesaExamen", b =>
-                {
-                    b.HasOne("Inscripciones.Models.Materia", "Materia")
-                        .WithMany()
-                        .HasForeignKey("MateriaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Inscripciones.Models.TurnoExamen", "TurnoExamen")
-                        .WithMany()
-                        .HasForeignKey("TurnoExamenId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Materia");
-
-                    b.Navigation("TurnoExamen");
                 });
 #pragma warning restore 612, 618
         }
