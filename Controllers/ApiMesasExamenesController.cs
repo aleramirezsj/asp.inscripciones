@@ -26,7 +26,7 @@ namespace Inscripciones.Controllers
         {
             if (idCarrera != null && idTurno!=null)
             {
-                return await _context.mesasexamenes.Include(m=>m.DetallesMesaExamen).ThenInclude(d=>d.Docente).Include(m=>m.Materia).ThenInclude(m=>m.AnioCarrera).Where(m => m.Materia.AnioCarrera.CarreraId==idCarrera&&m.TurnoExamenId==idTurno).ToListAsync();
+                return await _context.mesasexamenes.Include(m=>m.DetallesMesaExamen).ThenInclude(d=>d.Docente).Include(m=>m.Materia).ThenInclude(m=>m.AnioCarrera).ThenInclude(a=>a.Carrera).Where(m => m.Materia.AnioCarrera.CarreraId==idCarrera&&m.TurnoExamenId==idTurno).ToListAsync();
             }
             return await _context.mesasexamenes.ToListAsync();
         }
