@@ -11,6 +11,8 @@
         public int TurnoExamenId { get; set; }
         public TurnoExamen? TurnoExamen { get; set; }
 
+        public ICollection<DetalleMesaExamen> DetallesMesaExamen { get; set; }
+
         public override string ToString()
         {
             return $"{Materia?.Nombre} {Llamado1.Date} / {Llamado2.Date}" ?? string.Empty;

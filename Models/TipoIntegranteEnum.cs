@@ -3,7 +3,8 @@
     public enum TipoIntegranteEnum
     {
         Presidente=0, 
-        Vocal=1,
+        Vocal1=1,
+        Vocal2=2,
         Suplente
     }
 }

@@ -110,7 +110,7 @@ namespace Inscripciones.Controllers
         }
 
         [HttpGet("checkduplicado")]
-        public async Task<IActionResult> CheckDuplicado(int idDetalle, int idInscripcion, int idMateria)
+        public async Task<IActionResult> CheckDuplicado([FromQuery] int idDetalle, int idInscripcion, int idMateria)
         {
             bool isDuplicate;
             if (idDetalle == 0)

@@ -1,6 +1,7 @@
 using Inscripciones.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,12 @@ builder.Services.AddDbContext<InscripcionesContext>(
                                         maxRetryDelay: System.TimeSpan.FromSeconds(30),
                                        errorNumbersToAdd: null)
                                 ));
-
+// Configura el serializador JSON para manejar referencias cíclicas
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    });
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

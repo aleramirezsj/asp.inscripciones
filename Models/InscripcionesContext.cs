@@ -453,94 +453,500 @@ namespace Inscripciones.Models
             #endregion
             #region datos semillas Docentes
             modelBuilder.Entity<Docente>().HasData(
-                new Docente { Id = 1, Nombre = "M. Aimar" },
-                new Docente { Id = 2, Nombre = "E. Albaristo" },
-                new Docente { Id = 3, Nombre = "A. Alesso" },
-                new Docente { Id = 4, Nombre = "M. Alesso" },
-                new Docente { Id = 5, Nombre = "P. Arnolfo" },
-                new Docente { Id = 6, Nombre = "D. Bazan" },
-                new Docente { Id = 7, Nombre = "Blanche" },
-                new Docente { Id = 8, Nombre = "J. Bogni" },
-                new Docente { Id = 9, Nombre = "D. Brondino" },
-                new Docente { Id = 10, Nombre = "G. Brussa" },
-                new Docente { Id = 11, Nombre = "MB. Buceta" },
-                new Docente { Id = 12, Nombre = "F. Bueno" },
-                new Docente { Id = 13, Nombre = "G. Cainero" },
-                new Docente { Id = 14, Nombre = "M. Calvo Tobias" },
-                new Docente { Id = 15, Nombre = "J. Cavallini" },
-                new Docente { Id = 16, Nombre = "L. Chauderón" },
-                new Docente { Id = 17, Nombre = "V. Chelini" },
-                new Docente { Id = 18, Nombre = "R. Corradi" },
-                new Docente { Id = 19, Nombre = "C. Dalesio" },
-                new Docente { Id = 20, Nombre = "C. Dellaferrera" },
-                new Docente { Id = 21, Nombre = "O. Degiorgio" },
-                new Docente { Id = 22, Nombre = "M. Della Rosa" },
-                new Docente { Id = 23, Nombre = "M. Doglioli" },
-                new Docente { Id = 24, Nombre = "C. Duran" },
-                new Docente { Id = 25, Nombre = "F. Espru" },
-                new Docente { Id = 26, Nombre = "M. Ferrero" },
-                new Docente { Id = 27, Nombre = "N. Ferri" },
-                new Docente { Id = 28, Nombre = "M. Ferreyra" },
-                new Docente { Id = 29, Nombre = "JP. Gaido" },
-                new Docente { Id = 30, Nombre = "M. Galmes" },
-                new Docente { Id = 31, Nombre = "A. Genero" },
-                new Docente { Id = 32, Nombre = "V. Gomez" },
-                new Docente { Id = 33, Nombre = "L. Gongora" },
-                new Docente { Id = 34, Nombre = "MC. Gretter" },
-                new Docente { Id = 35, Nombre = "S. Grosso" },
-                new Docente { Id = 36, Nombre = "R. Imhof" },
-                new Docente { Id = 37, Nombre = "M. Imperiale" },
-                new Docente { Id = 38, Nombre = "L. Lodi" },
-                new Docente { Id = 39, Nombre = "F. Lovino" },
-                new Docente { Id = 40, Nombre = "J. Mancilla" },
-                new Docente { Id = 41, Nombre = "S. Manattini" },
-                new Docente { Id = 42, Nombre = "A. Marenoni" },
-                new Docente { Id = 43, Nombre = "G. Martinez" },
-                new Docente { Id = 44, Nombre = "M. Mendoza" },
-                new Docente { Id = 45, Nombre = "A. Miñoz" },
-                new Docente { Id = 46, Nombre = "T. Molina" },
-                new Docente { Id = 47, Nombre = "MI. Monzón" },
-                new Docente { Id = 48, Nombre = "R. Nasimbera" },
-                new Docente { Id = 49, Nombre = "L. Ortiz" },
-                new Docente { Id = 50, Nombre = "M. Paredes" },
-                new Docente { Id = 51, Nombre = "F. Pedrazzoli" },
-                new Docente { Id = 52, Nombre = "S. Pereyra" },
-                new Docente { Id = 53, Nombre = "S. Peressin" },
-                new Docente { Id = 54, Nombre = "C. Prida" },
-                new Docente { Id = 55, Nombre = "D. Puccio" },
-                new Docente { Id = 56, Nombre = "E. Quaglia" },
-                new Docente { Id = 57, Nombre = "RA. Ramirez" },
-                new Docente { Id = 58, Nombre = "D. Renteria" },
-                new Docente { Id = 59, Nombre = "J. Rodriguez Quain" },
-                new Docente { Id = 60, Nombre = "E. Rosso" },
-                new Docente { Id = 61, Nombre = "R. Sanchez" },
-                new Docente { Id = 62, Nombre = "P. Sandoval" },
-                new Docente { Id = 63, Nombre = "I. Sancho" },
-                new Docente { Id = 64, Nombre = "J. Sara" },
-                new Docente { Id = 65, Nombre = "J. Strada" },
-                new Docente { Id = 66, Nombre = "C. Tovar" },
-                new Docente { Id = 67, Nombre = "V. Travesani" },
-                new Docente { Id = 68, Nombre = "C. Tregnaghi" },
-                new Docente { Id = 69, Nombre = "MR. Tschopp" },
-                new Docente { Id = 70, Nombre = "A. Verzzali" },
-                new Docente { Id = 71, Nombre = "E. Vigniatti" },
-                new Docente { Id = 72, Nombre = "MF. Villa" }
+    new Docente { Id = 1, Nombre = "Adamo, G." },
+    new Docente { Id = 2, Nombre = "Aimar, M.A." },
+    new Docente { Id = 3, Nombre = "Albaristo, Stef." },
+    new Docente { Id = 4, Nombre = "Alesso, A." },
+    new Docente { Id = 5, Nombre = "Alesso, M." },
+    new Docente { Id = 6, Nombre = "Arnolfo, P." },
+    new Docente { Id = 7, Nombre = "Bazán, D." },
+    new Docente { Id = 8, Nombre = "Blanche, C." },
+    new Docente { Id = 9, Nombre = "Bogni, J." },
+    new Docente { Id = 10, Nombre = "Brondino, D." },
+    new Docente { Id = 11, Nombre = "Brussa, G." },
+    new Docente { Id = 12, Nombre = "Buceta, MB." },
+    new Docente { Id = 13, Nombre = "Bueno, M.F." },
+    new Docente { Id = 14, Nombre = "Cainero, G." },
+    new Docente { Id = 15, Nombre = "Calvo, M." },
+    new Docente { Id = 16, Nombre = "Cavallini, J." },
+    new Docente { Id = 17, Nombre = "Chauderón, L." },
+    new Docente { Id = 18, Nombre = "Chelini, V." },
+    new Docente { Id = 19, Nombre = "Corradi, R." },
+    new Docente { Id = 20, Nombre = "Dalesio, C." },
+    new Docente { Id = 21, Nombre = "Degiorgio, O." },
+    new Docente { Id = 22, Nombre = "Della Rosa, M." },
+    new Docente { Id = 23, Nombre = "Dellaferrera, C." },
+    new Docente { Id = 24, Nombre = "Doglioli, M." },
+    new Docente { Id = 25, Nombre = "Duran, C." },
+    new Docente { Id = 26, Nombre = "Epes, B." },
+    new Docente { Id = 27, Nombre = "Espru, F." },
+    new Docente { Id = 28, Nombre = "Ferreyra, M." },
+    new Docente { Id = 29, Nombre = "Ferrero, M." },
+    new Docente { Id = 30, Nombre = "Ferr, N." },
+    new Docente { Id = 31, Nombre = "Gaido, J.P." },
+    new Docente { Id = 32, Nombre = "Galmes, M." },
+    new Docente { Id = 33, Nombre = "Genero, A." },
+    new Docente { Id = 34, Nombre = "Gongora, L." },
+    new Docente { Id = 35, Nombre = "Gomez, V." },
+    new Docente { Id = 36, Nombre = "Gretter, M.C." },
+    new Docente { Id = 37, Nombre = "Grosso, S." },
+    new Docente { Id = 38, Nombre = "Imhof, R." },
+    new Docente { Id = 39, Nombre = "Imperiale, M." },
+    new Docente { Id = 40, Nombre = "Lodi, L." },
+    new Docente { Id = 41, Nombre = "Lovino, F." },
+    new Docente { Id = 42, Nombre = "Mancilla, J." },
+    new Docente { Id = 43, Nombre = "Manattini, S." },
+    new Docente { Id = 44, Nombre = "Marenoni, A." },
+    new Docente { Id = 45, Nombre = "Martínez, G." },
+    new Docente { Id = 46, Nombre = "Mendoza, M." },
+    new Docente { Id = 47, Nombre = "Miñoz, A." },
+    new Docente { Id = 48, Nombre = "Molina, T." },
+    new Docente { Id = 49, Nombre = "Monzón, M.I." },
+    new Docente { Id = 50, Nombre = "Nasimbera, R." },
+    new Docente { Id = 51, Nombre = "Ortiz, L." },
+    new Docente { Id = 52, Nombre = "Paredes, M." },
+    new Docente { Id = 53, Nombre = "Pedrazzoli, F." },
+    new Docente { Id = 54, Nombre = "Pereyra, S." },
+    new Docente { Id = 55, Nombre = "Peressin, S." },
+    new Docente { Id = 56, Nombre = "Prida, C." },
+    new Docente { Id = 57, Nombre = "Puccio, D." },
+    new Docente { Id = 58, Nombre = "Quaglia, E." },
+    new Docente { Id = 59, Nombre = "Ramirez, R.A." },
+    new Docente { Id = 60, Nombre = "Renteria, D." },
+    new Docente { Id = 61, Nombre = "Rodriguez Quain, J." },
+    new Docente { Id = 62, Nombre = "Rosso, E." },
+    new Docente { Id = 63, Nombre = "Sanchez, R." },
+    new Docente { Id = 64, Nombre = "Sandoval, P." },
+    new Docente { Id = 65, Nombre = "Sancho, I." },
+    new Docente { Id = 66, Nombre = "Sara, J." },
+    new Docente { Id = 67, Nombre = "Strada, J." },
+    new Docente { Id = 68, Nombre = "Tovar, C." },
+    new Docente { Id = 69, Nombre = "Tregnaghi, C." },
+    new Docente { Id = 70, Nombre = "Tschopp, M.R." },
+    new Docente { Id = 71, Nombre = "Verzzali, A." },
+    new Docente { Id = 72, Nombre = "Vigniatti, E." },
+    new Docente { Id = 73, Nombre = "Villa, M.F." }
         );
             #endregion
             #region datos semillas Mesas de examenes
-            var mesa = new MesaExamen { Id = 1, Llamado1 = DateTime.Today, Llamado2 = DateTime.Today.AddDays(15), Horario = "18hs", MateriaId = 1, TurnoExamenId = 1 };
+            var mesasExamen = new List<MesaExamen>();
+            var detallesMesaExamen = new List<DetalleMesaExamen>();
+            int mesaId = 1;
+            int detalleId = 1;
 
-            modelBuilder.Entity<MesaExamen>().HasData(mesa);
-            #endregion
-            #region datos semillas Detalle Mesas de examenes
-            var mesa1 = new[]
+            void AgregarMesa(DateTime fecha, int materiaId, string horario)
             {
-                new DetalleMesaExamen { Id = 1, MesaExamenId=1, DocenteId=1, TipoIntegrante=TipoIntegranteEnum.Presidente },
-                new DetalleMesaExamen { Id = 2, MesaExamenId = 1, DocenteId = 2, TipoIntegrante = TipoIntegranteEnum.Vocal },
-                new DetalleMesaExamen { Id = 3, MesaExamenId = 1, DocenteId = 3, TipoIntegrante = TipoIntegranteEnum.Vocal },
-                new DetalleMesaExamen { Id = 4, MesaExamenId = 1, DocenteId = 4, TipoIntegrante = TipoIntegranteEnum.Suplente }
-            };
-            modelBuilder.Entity<DetalleMesaExamen>().HasData(mesa1);
+                mesasExamen.Add(new MesaExamen
+                {
+                    Id = mesaId++,
+                    Llamado1 = fecha,
+                    Llamado2 = fecha.AddDays(14),
+                    MateriaId = materiaId,
+                    Horario = horario,
+                    TurnoExamenId = 1 // ID del turno "Jul/Ago 2024"
+                });
+            }
+
+            void AgregarDetalleMesa(int mesaId, int presidenteId, int vocal1Id, int vocal2Id, int suplenteId)
+            {
+                detallesMesaExamen.Add(new DetalleMesaExamen { Id = detalleId++, MesaExamenId = mesaId, DocenteId = presidenteId, TipoIntegrante = TipoIntegranteEnum.Presidente });
+                detallesMesaExamen.Add(new DetalleMesaExamen { Id = detalleId++, MesaExamenId = mesaId, DocenteId = vocal1Id, TipoIntegrante = TipoIntegranteEnum.Vocal1 });
+                detallesMesaExamen.Add(new DetalleMesaExamen { Id = detalleId++, MesaExamenId = mesaId, DocenteId = vocal2Id, TipoIntegrante = TipoIntegranteEnum.Vocal2 });
+                detallesMesaExamen.Add(new DetalleMesaExamen { Id = detalleId++, MesaExamenId = mesaId, DocenteId = suplenteId, TipoIntegrante = TipoIntegranteEnum.Suplente });
+            }
+
+            // Profesorado de Educación Tecnológica
+            AgregarMesa(new DateTime(2024, 7, 25), 41, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 6, 66, 56, 16);
+
+            AgregarMesa(new DateTime(2024, 7, 29), 38, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 71, 43, 39, 66);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 41, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 66, 45, 39, 28);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 45, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 38, 53, 6, 23);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 44, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 11, 58, 54, 56);
+
+            // Segundo año
+            AgregarMesa(new DateTime(2024, 7, 23), 52, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 47, 16, 73, 16);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 46, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 66, 45, 28);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 47, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 28, 73, 39, 23);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 48, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 73, 16, 6, 56);
+
+            // Tercer año
+            AgregarMesa(new DateTime(2024, 7, 23), 62, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 16, 47, 73, 16);
+
+            AgregarMesa(new DateTime(2024, 7, 25), 60, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 56, 6, 66, 53);
+
+            AgregarMesa(new DateTime(2024, 7, 29), 57, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 43, 71, 39, 66);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 59, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 73, 28, 39, 23);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 55, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 66, 72, 56);
+
+            // Cuarto año
+            AgregarMesa(new DateTime(2024, 7, 29), 66, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 71, 43, 66);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 68, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 45, 66, 39, 28);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 73, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 16, 73, 6, 56);
+
+            // Tecnicatura Superior en Desarrollo de Software
+            // Primer año
+            AgregarMesa(new DateTime(2024, 7, 24), 80, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 57, 37, 11, 59);
+
+            AgregarMesa(new DateTime(2024, 7, 26), 85, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 64, 59, 37, 31);
+
+            AgregarMesa(new DateTime(2024, 7, 29), 81, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 47, 22, 34, 64);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 83, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 15, 59, 5, 53);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 84, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 5, 4, 59, 57);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 82, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 53, 4, 5, 34);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 77, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 31, 64, 59, 59);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 78, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 31, 64, 59, 59);
+
+            // Segundo año
+            AgregarMesa(new DateTime(2024, 7, 23), 90, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 11, 22, 34, 15);
+
+            AgregarMesa(new DateTime(2024, 7, 23), 86, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 22, 34, 11, 15);
+
+            AgregarMesa(new DateTime(2024, 7, 23), 87, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 22, 34, 11, 15);
+
+            AgregarMesa(new DateTime(2024, 7, 24), 88, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 37, 57, 11, 57);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 93, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 59, 15, 34, 53);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 92, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 4, 5, 59, 57);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 91, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 59, 53, 31, 34);
+
+            // Tercer año
+            AgregarMesa(new DateTime(2024, 7, 30), 100, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 59, 15, 34, 53);
+
+            AgregarMesa(new DateTime(2024, 7, 24), 95, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 7, 57, 15, 15);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 99, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 59, 4, 5, 57);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 98, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 59, 53, 31, 34);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 101, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 4, 46, 47, 59);
+
+            // Tecnicatura Superior en Infraestructura de Tecnología de la Información
+            // Primer año
+            AgregarMesa(new DateTime(2024, 7, 25), 161, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 15, 47, 5, 21);
+
+            AgregarMesa(new DateTime(2024, 7, 25), 158, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 47, 15, 5, 21);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 156, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 58, 11, 54, 46);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 154, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 31, 64, 59, 58);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 155, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 31, 64, 59, 58);
+
+            // Segundo año
+            AgregarMesa(new DateTime(2024, 7, 23), 166, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 11, 22, 34, 46);
+
+            AgregarMesa(new DateTime(2024, 7, 25), 170, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 5, 47, 15, 21);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 163, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 42, 46, 7, 53);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 164, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 42, 46, 7, 53);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 167, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 64, 21, 47, 46);
+
+            // Tercer año
+            AgregarMesa(new DateTime(2024, 7, 30), 172, "19 HS");
+            AgregarDetalleMesa(mesaId - 1, 7, 46, 42, 53);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 178, "19 HS");
+            AgregarDetalleMesa(mesaId - 1, 46, 7, 42, 53);
+
+            // Tecnico Superior en Gestión de las Organizaciones
+            // Primer año
+            AgregarMesa(new DateTime(2024, 7, 22), 133, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 47, 60, 18, 67);
+
+            AgregarMesa(new DateTime(2024, 7, 24), 131, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 48, 2, 31, 28);
+
+            AgregarMesa(new DateTime(2024, 7, 26), 132, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 64, 63, 2, 33);
+
+            AgregarMesa(new DateTime(2024, 7, 29), 129, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 34, 67, 17, 47);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 130, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 36, 29, 17, 48);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 127, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 31, 47, 67, 2);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 128, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 31, 47, 67, 2);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 134, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 67, 48, 29, 28);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 135, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 2, 60, 36, 28);
+
+            // Tecnicatura Superior en Gestión de las Organizaciones -2do año
+            AgregarMesa(new DateTime(2024, 7, 22), 140, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 60, 47, 18, 67);
+
+            AgregarMesa(new DateTime(2024, 7, 23), 144, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 29, 7, 11, 37);
+
+            AgregarMesa(new DateTime(2024, 7, 24), 141, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 17, 18, 7, 29);
+
+            AgregarMesa(new DateTime(2024, 7, 26), 142, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 34, 18, 37, 33);
+
+            AgregarMesa(new DateTime(2024, 7, 29), 138, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 34, 48, 60, 47);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 139, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 37, 7, 33, 48);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 143, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 34, 18, 48, 2);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 137, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 67, 48, 29, 29);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 136, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 63, 34, 18, 29);
+
+            // Tecnicatura Superior en Gestión de las Organizaciones - 3er año
+            AgregarMesa(new DateTime(2024, 7, 24), 151, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 18, 17, 7, 29);
+
+            AgregarMesa(new DateTime(2024, 7, 26), 150, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 18, 34, 37, 29);
+
+            AgregarMesa(new DateTime(2024, 7, 30), 146, "17 HS");
+            AgregarDetalleMesa(mesaId - 1, 7, 37, 33, 48);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 152, "18 HS");
+            AgregarDetalleMesa(mesaId - 1, 18, 34, 48, 2);
+
+            
+            // Tecnicatura Superior en Enfermería
+            // Primer año
+            AgregarMesa(new DateTime(2024, 7, 23), 106, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 61, 9, 32, 3);
+            AgregarMesa(new DateTime(2024, 7, 29), 102, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 8, 9, 12, 61);
+            AgregarMesa(new DateTime(2024, 7, 29), 103, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 8, 9, 12, 61);
+            AgregarMesa(new DateTime(2024, 7, 30), 107, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 3, 61, 32, 9);
+            AgregarMesa(new DateTime(2024, 7, 31), 105, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 54, 51, 61, 3);
+            AgregarMesa(new DateTime(2024, 8, 2), 107, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 3, 51, 32, 12);
+            // Segundo año
+            AgregarMesa(new DateTime(2024, 7, 23), 116, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 9, 61, 32, 3);
+            AgregarMesa(new DateTime(2024, 7, 24), 113, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 61, 7, 54, 61);
+            AgregarMesa(new DateTime(2024, 7, 25), 112, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 68, 24, 3, 25);
+            AgregarMesa(new DateTime(2024, 7, 25), 115, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 24, 68, 3, 25);
+            AgregarMesa(new DateTime(2024, 7, 29), 114, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 54, 3, 51, 61);
+            AgregarMesa(new DateTime(2024, 7, 31), 110, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 12, 49, 7, 3);
+            AgregarMesa(new DateTime(2024, 7, 31), 111, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 49, 12, 7, 3);
+            // Tercer año
+            AgregarMesa(new DateTime(2024, 7, 24), 119, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 7, 61, 54, 61);
+            AgregarMesa(new DateTime(2024, 7, 24), 120, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 30, 35, 31, 61);
+            AgregarMesa(new DateTime(2024, 7, 25), 121, "10 HS");
+            AgregarDetalleMesa(mesaId - 1, 37, 68, 25, 25);
+            AgregarMesa(new DateTime(2024, 7, 26), 123, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 9, 32, 51, 3);
+            AgregarMesa(new DateTime(2024, 7, 29), 125, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 3, 54, 51, 61);
+            AgregarMesa(new DateTime(2024, 7, 30), 124, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 61, 3, 32, 9);
+            AgregarMesa(new DateTime(2024, 8, 1), 122, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 25, 68, 51, 9);
+            // Profesorado de Educación Secundaria en Ciencias de la Administración
+            // Primer año
+            AgregarMesa(new DateTime(2024, 7, 22), 229, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 72, 20, 2);
+            AgregarMesa(new DateTime(2024, 7, 23), 224, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 28, 72, 17, 34);
+            AgregarMesa(new DateTime(2024, 7, 24), 226, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 17, 22, 44, 47);
+            AgregarMesa(new DateTime(2024, 7, 24), 227, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 17, 22, 44, 47);
+            AgregarMesa(new DateTime(2024, 7, 29), 225, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 42, 71, 60, 48);
+            AgregarMesa(new DateTime(2024, 7, 31), 228, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 34, 48, 44, 22);
+            AgregarMesa(new DateTime(2024, 7, 31), 231, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 44, 48, 34, 22);
+            AgregarMesa(new DateTime(2024, 8, 1), 230, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 60, 28, 55, 28);
+            // Segundo año
+            AgregarMesa(new DateTime(2024, 7, 22), 235, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 72, 39, 20, 34);
+            AgregarMesa(new DateTime(2024, 7, 25), 240, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 11, 30, 31, 36);
+            AgregarMesa(new DateTime(2024, 7, 25), 238, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 30, 11, 31, 36);
+            AgregarMesa(new DateTime(2024, 7, 26), 233, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 49, 28, 71, 2);
+            AgregarMesa(new DateTime(2024, 7, 29), 239, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 60, 42, 71, 48);
+            AgregarMesa(new DateTime(2024, 7, 30), 234, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 28, 64, 30, 17);
+            AgregarMesa(new DateTime(2024, 7, 31), 237, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 34, 48, 44, 22);
+            // Tercer año
+            AgregarMesa(new DateTime(2024, 7, 23), 251, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 72, 28, 17, 34);
+            AgregarMesa(new DateTime(2024, 7, 24), 246, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 22, 17, 44, 47);
+            AgregarMesa(new DateTime(2024, 7, 25), 249, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 30, 11, 31, 36);
+            AgregarMesa(new DateTime(2024, 7, 26), 243, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 28, 49, 71, 2);
+            AgregarMesa(new DateTime(2024, 7, 29), 245, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 71, 42, 60, 48);
+            AgregarMesa(new DateTime(2024, 8, 1), 244, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 28, 60, 55, 27);
+            // Cuarto año
+            AgregarMesa(new DateTime(2024, 7, 30), 263, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 64, 28, 30, 17);
+            AgregarMesa(new DateTime(2024, 7, 31), 259, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 48, 44, 34, 22);
+            // Profesorado de Educación Inicial
+            // Primer año
+            AgregarMesa(new DateTime(2024, 7, 22), 182, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 42, 54, 31, 44);
+            AgregarMesa(new DateTime(2024, 7, 22), 189, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 54, 42, 31, 44);
+            AgregarMesa(new DateTime(2024, 7, 24), 180, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 49, 69, 72, 10);
+            AgregarMesa(new DateTime(2024, 7, 25), 185, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 43, 49, 54, 36);
+            AgregarMesa(new DateTime(2024, 7, 30), 179, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 10, 13, 65, 69);
+            AgregarMesa(new DateTime(2024, 8, 2), 181, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 73, 40, 10, 72);
+            // Segundo año
+            AgregarMesa(new DateTime(2024, 7, 22), 201, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 54, 42, 31, 44);
+            AgregarMesa(new DateTime(2024, 7, 24), 200, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 69, 49, 72, 10);
+            AgregarMesa(new DateTime(2024, 7, 25), 198, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 49, 43, 54, 36);
+            AgregarMesa(new DateTime(2024, 7, 30), 197, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 13, 10, 65, 69);
+            AgregarMesa(new DateTime(2024, 7, 30), 195, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 65, 10, 13, 69);
+            AgregarMesa(new DateTime(2024, 8, 1), 199, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 44, 11, 36, 49);
+            AgregarMesa(new DateTime(2024, 8, 2), 192, "13 HS");
+            AgregarDetalleMesa(mesaId - 1, 40, 73, 10, 72);
+
+            // Profesorado de Educación Inicial - 3er año
+            AgregarMesa(new DateTime(2024, 7, 24), 209, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 69, 52, 42, 54);
+
+            AgregarMesa(new DateTime(2024, 7, 25), 204, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 21, 68, 19, 54);
+
+            AgregarMesa(new DateTime(2024, 7, 26), 205, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 27, 39, 14, 54);
+
+            AgregarMesa(new DateTime(2024, 7, 29), 207, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 44, 11, 19, 54);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 206, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 72, 71, 50, 3);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 210, "10 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 60, 27, 12);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 214, "10 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 60, 27, 62);
+
+            AgregarMesa(new DateTime(2024, 8, 2), 215, "10 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 60, 27, 62);
+
+            // Profesorado de Educación Inicial - 4to año
+            AgregarMesa(new DateTime(2024, 7, 26), 219, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 64, 2, 60, 54);
+
+            AgregarMesa(new DateTime(2024, 7, 31), 221, "8 HS");
+            AgregarDetalleMesa(mesaId - 1, 71, 50, 72, 30);
+
+            AgregarMesa(new DateTime(2024, 8, 1), 218, "11 HS");
+            AgregarDetalleMesa(mesaId - 1, 39, 27, 14, 12);
+
+            modelBuilder.Entity<MesaExamen>().HasData(mesasExamen);
+            modelBuilder.Entity<DetalleMesaExamen>().HasData(detallesMesaExamen);
             #endregion
         }
 
