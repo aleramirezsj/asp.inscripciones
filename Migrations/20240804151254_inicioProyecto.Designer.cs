@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inscripciones.Migrations
 {
     [DbContext(typeof(InscripcionesContext))]
-    [Migration("20240804005816_inicioProyecto")]
+    [Migration("20240804151254_inicioProyecto")]
     partial class inicioProyecto
     {
         /// <inheritdoc />
@@ -432,6 +432,15 @@ namespace Inscripciones.Migrations
                     b.HasIndex("MateriaId");
 
                     b.ToTable("detallesinscripciones");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            InscripcionId = 1,
+                            MateriaId = 1,
+                            ModalidadCursado = 0
+                        });
                 });
 
             modelBuilder.Entity("Inscripciones.Models.DetalleMesaExamen", b =>
@@ -4853,6 +4862,9 @@ namespace Inscripciones.Migrations
                     b.Property<int>("CarreraId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CicloLectivoId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime(6)");
 
@@ -4862,7 +4874,19 @@ namespace Inscripciones.Migrations
 
                     b.HasIndex("CarreraId");
 
+                    b.HasIndex("CicloLectivoId");
+
                     b.ToTable("inscripciones");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AlumnoId = 1,
+                            CarreraId = 1,
+                            CicloLectivoId = 1,
+                            Fecha = new DateTime(2024, 8, 4, 12, 12, 53, 617, DateTimeKind.Local).AddTicks(4842)
+                        });
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Inscripciones.CicloLectivo", b =>
@@ -7930,9 +7954,17 @@ namespace Inscripciones.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Inscripciones.Models.Inscripciones.CicloLectivo", "CicloLectivo")
+                        .WithMany()
+                        .HasForeignKey("CicloLectivoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Alumno");
 
                     b.Navigation("Carrera");
+
+                    b.Navigation("CicloLectivo");
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Materia", b =>

@@ -139,34 +139,6 @@ namespace Inscripciones.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "inscripciones",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Fecha = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    AlumnoId = table.Column<int>(type: "int", nullable: false),
-                    CarreraId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_inscripciones", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_inscripciones_alumnos_AlumnoId",
-                        column: x => x.AlumnoId,
-                        principalTable: "alumnos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_inscripciones_carreras_CarreraId",
-                        column: x => x.CarreraId,
-                        principalTable: "carreras",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "inscriptoscarreras",
                 columns: table => new
                 {
@@ -188,6 +160,41 @@ namespace Inscripciones.Migrations
                         column: x => x.CarreraId,
                         principalTable: "carreras",
                         principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "inscripciones",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Fecha = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    AlumnoId = table.Column<int>(type: "int", nullable: false),
+                    CarreraId = table.Column<int>(type: "int", nullable: false),
+                    CicloLectivoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_inscripciones", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_inscripciones_alumnos_AlumnoId",
+                        column: x => x.AlumnoId,
+                        principalTable: "alumnos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_inscripciones_carreras_CarreraId",
+                        column: x => x.CarreraId,
+                        principalTable: "carreras",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_inscripciones_cicloslectivos_CicloLectivoId",
+                        column: x => x.CicloLectivoId,
+                        principalTable: "cicloslectivos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -559,6 +566,11 @@ namespace Inscripciones.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "inscripciones",
+                columns: new[] { "Id", "AlumnoId", "CarreraId", "CicloLectivoId", "Fecha" },
+                values: new object[] { 1, 1, 1, 1, new DateTime(2024, 8, 4, 12, 12, 53, 617, DateTimeKind.Local).AddTicks(4842) });
+
+            migrationBuilder.InsertData(
                 table: "inscriptoscarreras",
                 columns: new[] { "Id", "AlumnoId", "CarreraId" },
                 values: new object[] { 1, 1, 1 });
@@ -837,6 +849,11 @@ namespace Inscripciones.Migrations
                     { 262, 16, "Producción de los Recursos Didácticos II" },
                     { 263, 16, "Unidad de Definición Institucional" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "detallesinscripciones",
+                columns: new[] { "Id", "InscripcionId", "MateriaId", "ModalidadCursado" },
+                values: new object[] { 1, 1, 1, 0 });
 
             migrationBuilder.InsertData(
                 table: "horarios",
@@ -1611,6 +1628,11 @@ namespace Inscripciones.Migrations
                 name: "IX_inscripciones_CarreraId",
                 table: "inscripciones",
                 column: "CarreraId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_inscripciones_CicloLectivoId",
+                table: "inscripciones",
+                column: "CicloLectivoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_inscriptoscarreras_AlumnoId",

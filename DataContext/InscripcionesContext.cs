@@ -455,6 +455,16 @@ namespace Inscripciones.Models
 
             modelBuilder.Entity<CicloLectivo>().HasData(ciclo);
             #endregion
+            #region datos semillas Inscripcion
+            var inscripcion = new Inscripcion { Id = 1, AlumnoId=1, CarreraId=1, Fecha= DateTime.Now, CicloLectivoId=1  };
+
+            modelBuilder.Entity<Inscripcion>().HasData(inscripcion);
+            #endregion
+            #region datos semillas DetalleInscripcion
+            var detalleInscripcion = new DetalleInscripcion { Id = 1, InscripcionId=1, MateriaId=1, ModalidadCursado= ModalidadCursadoEnum.Presencial };
+
+            modelBuilder.Entity<DetalleInscripcion>().HasData(detalleInscripcion);
+            #endregion
             #region datos semillas Docentes
             modelBuilder.Entity<Docente>().HasData(
     new Docente { Id = 1, Nombre = "Adamo, G." },
