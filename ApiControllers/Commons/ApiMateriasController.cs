@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Commons
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -26,7 +26,7 @@ namespace Inscripciones.Controllers
         {
             if (idAnioCarrera != null)
             {
-                return await _context.materias.Where(m=>m.AnioCarreraId.Equals(idAnioCarrera)).ToListAsync();
+                return await _context.materias.Where(m => m.AnioCarreraId.Equals(idAnioCarrera)).ToListAsync();
             }
             return await _context.materias.ToListAsync();
         }

@@ -39,32 +39,34 @@ namespace Inscripciones.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "anioslectivos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Nombre = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_anioslectivos", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "carreras",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nombre = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Sigla = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_carreras", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "cicloslectivos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_cicloslectivos", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -80,6 +82,22 @@ namespace Inscripciones.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_docentes", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "horas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Nombre = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    EsRecreo = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_horas", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -149,6 +167,61 @@ namespace Inscripciones.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "inscriptoscarreras",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    AlumnoId = table.Column<int>(type: "int", nullable: true),
+                    CarreraId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_inscriptoscarreras", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_inscriptoscarreras_alumnos_AlumnoId",
+                        column: x => x.AlumnoId,
+                        principalTable: "alumnos",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_inscriptoscarreras_carreras_CarreraId",
+                        column: x => x.CarreraId,
+                        principalTable: "carreras",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    User = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Email = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TipoUsuario = table.Column<int>(type: "int", nullable: false),
+                    AlumnoId = table.Column<int>(type: "int", nullable: true),
+                    DocenteId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_usuarios_alumnos_AlumnoId",
+                        column: x => x.AlumnoId,
+                        principalTable: "alumnos",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_usuarios_docentes_DocenteId",
+                        column: x => x.DocenteId,
+                        principalTable: "docentes",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "materias",
                 columns: table => new
                 {
@@ -199,6 +272,32 @@ namespace Inscripciones.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "horarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    MateriaId = table.Column<int>(type: "int", nullable: true),
+                    CantidadHoras = table.Column<int>(type: "int", nullable: false),
+                    CicloLectivoId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_horarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_horarios_cicloslectivos_CicloLectivoId",
+                        column: x => x.CicloLectivoId,
+                        principalTable: "cicloslectivos",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_horarios_materias_MateriaId",
+                        column: x => x.MateriaId,
+                        principalTable: "materias",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "mesasexamenes",
                 columns: table => new
                 {
@@ -226,6 +325,57 @@ namespace Inscripciones.Migrations
                         principalTable: "turnosexamenes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "detalleshorarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    HorarioId = table.Column<int>(type: "int", nullable: true),
+                    Dia = table.Column<int>(type: "int", nullable: false),
+                    HoraId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_detalleshorarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_detalleshorarios_horarios_HorarioId",
+                        column: x => x.HorarioId,
+                        principalTable: "horarios",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_detalleshorarios_horas_HoraId",
+                        column: x => x.HoraId,
+                        principalTable: "horas",
+                        principalColumn: "Id");
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "integranteshorarios",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    HorarioId = table.Column<int>(type: "int", nullable: true),
+                    DocenteId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_integranteshorarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_integranteshorarios_docentes_DocenteId",
+                        column: x => x.DocenteId,
+                        principalTable: "docentes",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_integranteshorarios_horarios_HorarioId",
+                        column: x => x.HorarioId,
+                        principalTable: "horarios",
+                        principalColumn: "Id");
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -263,25 +413,25 @@ namespace Inscripciones.Migrations
                 values: new object[] { 1, "Rubén Alejandro Ramirez", "Bv Roque Saenz Peña 2942", "aleramirezsj@gmail.com", "15447106" });
 
             migrationBuilder.InsertData(
-                table: "anioslectivos",
-                columns: new[] { "Id", "Nombre" },
-                values: new object[] { 1, "2024" });
-
-            migrationBuilder.InsertData(
                 table: "carreras",
-                columns: new[] { "Id", "Nombre" },
+                columns: new[] { "Id", "Nombre", "Sigla" },
                 values: new object[,]
                 {
-                    { 1, "Tecnicatura Superior en Desarrollo de Software" },
-                    { 2, "Tecnicatura Superior en Soporte de Infraestructura" },
-                    { 3, "Tecnicatura Superior en Gestion de las Organizaciones" },
-                    { 4, "Tecnicatura Superior en Enfermeria" },
-                    { 5, "Profesorado de Educación Secundaria en Ciencias de la Administración" },
-                    { 6, "Profesorado de Educación Inicial" },
-                    { 7, "Profesorado de Educación Secundaria en Economía" },
-                    { 8, "Profesorado de Educación Tecnológica" },
-                    { 9, "Licenciatura en Cooperativismo y Mutualismo" }
+                    { 1, "Tecnicatura Superior en Desarrollo de Software", "TSDS" },
+                    { 2, "Tecnicatura Superior en Soporte de Infraestructura", "TSSITI" },
+                    { 3, "Tecnicatura Superior en Gestion de las Organizaciones", "TSGO" },
+                    { 4, "Tecnicatura Superior en Enfermeria", "TSE" },
+                    { 5, "Profesorado de Educación Secundaria en Ciencias de la Administración", "PEA" },
+                    { 6, "Profesorado de Educación Inicial", "PEI" },
+                    { 7, "Profesorado de Educación Secundaria en Economía", "PEE" },
+                    { 8, "Profesorado de Educación Tecnológica", "PET" },
+                    { 9, "Licenciatura en Cooperativismo y Mutualismo", "LCM" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "cicloslectivos",
+                columns: new[] { "Id", "Nombre" },
+                values: new object[] { 1, "2024" });
 
             migrationBuilder.InsertData(
                 table: "docentes",
@@ -364,6 +514,11 @@ namespace Inscripciones.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "horas",
+                columns: new[] { "Id", "EsRecreo", "Nombre" },
+                values: new object[] { 1, false, "8:00hs a 9:00hs" });
+
+            migrationBuilder.InsertData(
                 table: "turnosexamenes",
                 columns: new[] { "Id", "Nombre" },
                 values: new object[] { 1, "Julio/Agosto 2024" });
@@ -402,6 +557,16 @@ namespace Inscripciones.Migrations
                     { 27, 8, "3er año" },
                     { 28, 8, "4to año" }
                 });
+
+            migrationBuilder.InsertData(
+                table: "inscriptoscarreras",
+                columns: new[] { "Id", "AlumnoId", "CarreraId" },
+                values: new object[] { 1, 1, 1 });
+
+            migrationBuilder.InsertData(
+                table: "usuarios",
+                columns: new[] { "Id", "AlumnoId", "DocenteId", "Email", "TipoUsuario", "User" },
+                values: new object[] { 1, null, 1, "admin@gmail.com", 2, "admin" });
 
             migrationBuilder.InsertData(
                 table: "materias",
@@ -674,6 +839,11 @@ namespace Inscripciones.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "horarios",
+                columns: new[] { "Id", "CantidadHoras", "CicloLectivoId", "MateriaId" },
+                values: new object[] { 1, 4, 1, 1 });
+
+            migrationBuilder.InsertData(
                 table: "mesasexamenes",
                 columns: new[] { "Id", "Horario", "Llamado1", "Llamado2", "MateriaId", "TurnoExamenId" },
                 values: new object[,]
@@ -817,6 +987,11 @@ namespace Inscripciones.Migrations
                     { 137, "8 HS", new DateTime(2024, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), 221, 1 },
                     { 138, "11 HS", new DateTime(2024, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 8, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), 218, 1 }
                 });
+
+            migrationBuilder.InsertData(
+                table: "detalleshorarios",
+                columns: new[] { "Id", "Dia", "HoraId", "HorarioId" },
+                values: new object[] { 1, 0, 1, 1 });
 
             migrationBuilder.InsertData(
                 table: "detallesmesasexamenes",
@@ -1377,10 +1552,25 @@ namespace Inscripciones.Migrations
                     { 552, 12, 138, 3 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "integranteshorarios",
+                columns: new[] { "Id", "DocenteId", "HorarioId" },
+                values: new object[] { 1, 1, 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_anioscarreras_CarreraId",
                 table: "anioscarreras",
                 column: "CarreraId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_detalleshorarios_HoraId",
+                table: "detalleshorarios",
+                column: "HoraId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_detalleshorarios_HorarioId",
+                table: "detalleshorarios",
+                column: "HorarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_detallesinscripciones_InscripcionId",
@@ -1403,6 +1593,16 @@ namespace Inscripciones.Migrations
                 column: "MesaExamenId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_horarios_CicloLectivoId",
+                table: "horarios",
+                column: "CicloLectivoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_horarios_MateriaId",
+                table: "horarios",
+                column: "MateriaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_inscripciones_AlumnoId",
                 table: "inscripciones",
                 column: "AlumnoId");
@@ -1411,6 +1611,26 @@ namespace Inscripciones.Migrations
                 name: "IX_inscripciones_CarreraId",
                 table: "inscripciones",
                 column: "CarreraId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_inscriptoscarreras_AlumnoId",
+                table: "inscriptoscarreras",
+                column: "AlumnoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_inscriptoscarreras_CarreraId",
+                table: "inscriptoscarreras",
+                column: "CarreraId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_integranteshorarios_DocenteId",
+                table: "integranteshorarios",
+                column: "DocenteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_integranteshorarios_HorarioId",
+                table: "integranteshorarios",
+                column: "HorarioId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_materias_AnioCarreraId",
@@ -1426,13 +1646,23 @@ namespace Inscripciones.Migrations
                 name: "IX_mesasexamenes_TurnoExamenId",
                 table: "mesasexamenes",
                 column: "TurnoExamenId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_usuarios_AlumnoId",
+                table: "usuarios",
+                column: "AlumnoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_usuarios_DocenteId",
+                table: "usuarios",
+                column: "DocenteId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "anioslectivos");
+                name: "detalleshorarios");
 
             migrationBuilder.DropTable(
                 name: "detallesinscripciones");
@@ -1441,22 +1671,40 @@ namespace Inscripciones.Migrations
                 name: "detallesmesasexamenes");
 
             migrationBuilder.DropTable(
-                name: "inscripciones");
+                name: "inscriptoscarreras");
 
             migrationBuilder.DropTable(
-                name: "docentes");
+                name: "integranteshorarios");
+
+            migrationBuilder.DropTable(
+                name: "usuarios");
+
+            migrationBuilder.DropTable(
+                name: "horas");
+
+            migrationBuilder.DropTable(
+                name: "inscripciones");
 
             migrationBuilder.DropTable(
                 name: "mesasexamenes");
 
             migrationBuilder.DropTable(
+                name: "horarios");
+
+            migrationBuilder.DropTable(
+                name: "docentes");
+
+            migrationBuilder.DropTable(
                 name: "alumnos");
 
             migrationBuilder.DropTable(
-                name: "materias");
+                name: "turnosexamenes");
 
             migrationBuilder.DropTable(
-                name: "turnosexamenes");
+                name: "cicloslectivos");
+
+            migrationBuilder.DropTable(
+                name: "materias");
 
             migrationBuilder.DropTable(
                 name: "anioscarreras");

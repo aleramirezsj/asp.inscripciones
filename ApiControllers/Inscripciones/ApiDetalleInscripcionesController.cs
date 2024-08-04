@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Inscripciones
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,9 +24,9 @@ namespace Inscripciones.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DetalleInscripcion>>> Getdetallesinscripciones([FromQuery] int? idInscripcion)
         {
-            if(idInscripcion != null)
+            if (idInscripcion != null)
             {
-                return await _context.detallesinscripciones.Include(d=>d.Materia).ThenInclude(m=>m.AnioCarrera).Where(d=>d.InscripcionId.Equals(idInscripcion)).OrderBy(d => d.Materia.AnioCarreraId).ToListAsync();
+                return await _context.detallesinscripciones.Include(d => d.Materia).ThenInclude(m => m.AnioCarrera).Where(d => d.InscripcionId.Equals(idInscripcion)).OrderBy(d => d.Materia.AnioCarreraId).ToListAsync();
             }
             return await _context.detallesinscripciones.ToListAsync();
         }
@@ -35,7 +35,7 @@ namespace Inscripciones.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<DetalleInscripcion>> GetDetalleInscripcion(int id)
         {
-            var detalleInscripcion = await _context.detallesinscripciones.Include(d=>d.Materia).Where(d=>d.Id.Equals(id)).FirstOrDefaultAsync();
+            var detalleInscripcion = await _context.detallesinscripciones.Include(d => d.Materia).Where(d => d.Id.Equals(id)).FirstOrDefaultAsync();
 
             if (detalleInscripcion == null)
             {
@@ -56,7 +56,7 @@ namespace Inscripciones.Controllers
             }
 
             _context.Entry(detalleInscripcion).State = EntityState.Modified;
-            
+
 
             try
             {
@@ -114,9 +114,9 @@ namespace Inscripciones.Controllers
         {
             bool isDuplicate;
             if (idDetalle == 0)
-                isDuplicate = await _context.detallesinscripciones.AnyAsync(d=>d.InscripcionId==idInscripcion &&d.MateriaId==idMateria);
+                isDuplicate = await _context.detallesinscripciones.AnyAsync(d => d.InscripcionId == idInscripcion && d.MateriaId == idMateria);
             else
-                isDuplicate= await _context.detallesinscripciones.AnyAsync(d=>d.Id!= idDetalle && d.InscripcionId == idInscripcion && d.MateriaId == idMateria);
+                isDuplicate = await _context.detallesinscripciones.AnyAsync(d => d.Id != idDetalle && d.InscripcionId == idInscripcion && d.MateriaId == idMateria);
 
             if (isDuplicate)
             {

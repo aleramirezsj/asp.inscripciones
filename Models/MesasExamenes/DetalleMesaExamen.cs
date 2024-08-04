@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using Inscripciones.Models.MesasExamenes;
 
 namespace Inscripciones.Models
 {

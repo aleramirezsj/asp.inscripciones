@@ -1,4 +1,4 @@
-﻿namespace Inscripciones.Models
+﻿namespace Inscripciones.Models.MesasExamenes
 {
     public class MesaExamen
     {
@@ -7,7 +7,7 @@
         public DateTime Llamado2 { get; set; }
         public int MateriaId { get; set; }
         public Materia? Materia { get; set; }
-        public string Horario { get; set; }= string.Empty;
+        public string Horario { get; set; } = string.Empty;
         public int TurnoExamenId { get; set; }
         public TurnoExamen? TurnoExamen { get; set; }
 

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Commons
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -22,11 +22,11 @@ namespace Inscripciones.Controllers
 
         // GET: api/ApiAnioCarreras
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnioCarrera>>> Getanioscarreras([FromQuery] int? idCarrera )
+        public async Task<ActionResult<IEnumerable<AnioCarrera>>> Getanioscarreras([FromQuery] int? idCarrera)
         {
-            if(idCarrera != null)
+            if (idCarrera != null)
             {
-                return await _context.anioscarreras.Include(a=>a.Carrera).Where(a=>a.CarreraId.Equals(idCarrera)).ToListAsync();
+                return await _context.anioscarreras.Include(a => a.Carrera).Where(a => a.CarreraId.Equals(idCarrera)).ToListAsync();
             }
             return await _context.anioscarreras.ToListAsync();
         }

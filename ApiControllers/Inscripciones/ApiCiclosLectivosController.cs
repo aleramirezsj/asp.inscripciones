@@ -6,52 +6,53 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
+using Inscripciones.Models.Inscripciones;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.Inscripciones
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ApiAniosLectivosController : ControllerBase
+    public class ApiCiclosLectivosController : ControllerBase
     {
         private readonly InscripcionesContext _context;
 
-        public ApiAniosLectivosController(InscripcionesContext context)
+        public ApiCiclosLectivosController(InscripcionesContext context)
         {
             _context = context;
         }
 
         // GET: api/ApiAniosLectivos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AnioLectivo>>> Getanioslectivos()
+        public async Task<ActionResult<IEnumerable<CicloLectivo>>> Getacicloslectivos()
         {
-            return await _context.anioslectivos.ToListAsync();
+            return await _context.cicloslectivos.ToListAsync();
         }
 
         // GET: api/ApiAniosLectivos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AnioLectivo>> GetAnioLectivo(int id)
+        public async Task<ActionResult<CicloLectivo>> GetCicloLectivo(int id)
         {
-            var anioLectivo = await _context.anioslectivos.FindAsync(id);
+            var cicloLectivo = await _context.cicloslectivos.FindAsync(id);
 
-            if (anioLectivo == null)
+            if (cicloLectivo == null)
             {
                 return NotFound();
             }
 
-            return anioLectivo;
+            return cicloLectivo;
         }
 
         // PUT: api/ApiAniosLectivos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutAnioLectivo(int id, AnioLectivo anioLectivo)
+        public async Task<IActionResult> PutCicloLectivo(int id, CicloLectivo cicloLectivo)
         {
-            if (id != anioLectivo.Id)
+            if (id != cicloLectivo.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(anioLectivo).State = EntityState.Modified;
+            _context.Entry(cicloLectivo).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +60,7 @@ namespace Inscripciones.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AnioLectivoExists(id))
+                if (!CicloLectivoExists(id))
                 {
                     return NotFound();
                 }
@@ -75,33 +76,33 @@ namespace Inscripciones.Controllers
         // POST: api/ApiAniosLectivos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<AnioLectivo>> PostAnioLectivo(AnioLectivo anioLectivo)
+        public async Task<ActionResult<CicloLectivo>> PostCicloLectivo(CicloLectivo cicloLectivo)
         {
-            _context.anioslectivos.Add(anioLectivo);
+            _context.cicloslectivos.Add(cicloLectivo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAnioLectivo", new { id = anioLectivo.Id }, anioLectivo);
+            return CreatedAtAction("GetCicloLectivo", new { id = cicloLectivo.Id }, cicloLectivo);
         }
 
         // DELETE: api/ApiAniosLectivos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAnioLectivo(int id)
         {
-            var anioLectivo = await _context.anioslectivos.FindAsync(id);
-            if (anioLectivo == null)
+            var cicloLectivo = await _context.cicloslectivos.FindAsync(id);
+            if (cicloLectivo == null)
             {
                 return NotFound();
             }
 
-            _context.anioslectivos.Remove(anioLectivo);
+            _context.cicloslectivos.Remove(cicloLectivo);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool AnioLectivoExists(int id)
+        private bool CicloLectivoExists(int id)
         {
-            return _context.anioslectivos.Any(e => e.Id == id);
+            return _context.cicloslectivos.Any(e => e.Id == id);
         }
     }
 }

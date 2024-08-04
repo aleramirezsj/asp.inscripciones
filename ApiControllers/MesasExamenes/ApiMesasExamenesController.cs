@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Inscripciones.Models;
+using Inscripciones.Models.MesasExamenes;
 
-namespace Inscripciones.Controllers
+namespace Inscripciones.ApiControllers.MesasExamenes
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -24,9 +25,9 @@ namespace Inscripciones.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MesaExamen>>> Getmesasexamenes([FromQuery] int? idCarrera, int? idTurno)
         {
-            if (idCarrera != null && idTurno!=null)
+            if (idCarrera != null && idTurno != null)
             {
-                return await _context.mesasexamenes.Include(m=>m.DetallesMesaExamen).ThenInclude(d=>d.Docente).Include(m=>m.Materia).ThenInclude(m=>m.AnioCarrera).ThenInclude(a=>a.Carrera).Where(m => m.Materia.AnioCarrera.CarreraId==idCarrera&&m.TurnoExamenId==idTurno).ToListAsync();
+                return await _context.mesasexamenes.Include(m => m.DetallesMesaExamen).ThenInclude(d => d.Docente).Include(m => m.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(m => m.Materia.AnioCarrera.CarreraId == idCarrera && m.TurnoExamenId == idTurno).ToListAsync();
             }
             return await _context.mesasexamenes.ToListAsync();
         }

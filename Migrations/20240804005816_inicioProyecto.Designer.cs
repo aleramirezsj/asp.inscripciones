@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inscripciones.Migrations
 {
     [DbContext(typeof(InscripcionesContext))]
-    [Migration("20240802150408_inicioProyecto")]
+    [Migration("20240804005816_inicioProyecto")]
     partial class inicioProyecto
     {
         /// <inheritdoc />
@@ -256,30 +256,6 @@ namespace Inscripciones.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Inscripciones.Models.AnioLectivo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("anioslectivos");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Nombre = "2024"
-                        });
-                });
-
             modelBuilder.Entity("Inscripciones.Models.Carrera", b =>
                 {
                     b.Property<int>("Id")
@@ -292,6 +268,10 @@ namespace Inscripciones.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("Sigla")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
 
                     b.ToTable("carreras");
@@ -300,47 +280,131 @@ namespace Inscripciones.Migrations
                         new
                         {
                             Id = 1,
-                            Nombre = "Tecnicatura Superior en Desarrollo de Software"
+                            Nombre = "Tecnicatura Superior en Desarrollo de Software",
+                            Sigla = "TSDS"
                         },
                         new
                         {
                             Id = 2,
-                            Nombre = "Tecnicatura Superior en Soporte de Infraestructura"
+                            Nombre = "Tecnicatura Superior en Soporte de Infraestructura",
+                            Sigla = "TSSITI"
                         },
                         new
                         {
                             Id = 3,
-                            Nombre = "Tecnicatura Superior en Gestion de las Organizaciones"
+                            Nombre = "Tecnicatura Superior en Gestion de las Organizaciones",
+                            Sigla = "TSGO"
                         },
                         new
                         {
                             Id = 4,
-                            Nombre = "Tecnicatura Superior en Enfermeria"
+                            Nombre = "Tecnicatura Superior en Enfermeria",
+                            Sigla = "TSE"
                         },
                         new
                         {
                             Id = 5,
-                            Nombre = "Profesorado de Educación Secundaria en Ciencias de la Administración"
+                            Nombre = "Profesorado de Educación Secundaria en Ciencias de la Administración",
+                            Sigla = "PEA"
                         },
                         new
                         {
                             Id = 6,
-                            Nombre = "Profesorado de Educación Inicial"
+                            Nombre = "Profesorado de Educación Inicial",
+                            Sigla = "PEI"
                         },
                         new
                         {
                             Id = 7,
-                            Nombre = "Profesorado de Educación Secundaria en Economía"
+                            Nombre = "Profesorado de Educación Secundaria en Economía",
+                            Sigla = "PEE"
                         },
                         new
                         {
                             Id = 8,
-                            Nombre = "Profesorado de Educación Tecnológica"
+                            Nombre = "Profesorado de Educación Tecnológica",
+                            Sigla = "PET"
                         },
                         new
                         {
                             Id = 9,
-                            Nombre = "Licenciatura en Cooperativismo y Mutualismo"
+                            Nombre = "Licenciatura en Cooperativismo y Mutualismo",
+                            Sigla = "LCM"
+                        });
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Commons.InscriptoCarrera", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AlumnoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CarreraId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AlumnoId");
+
+                    b.HasIndex("CarreraId");
+
+                    b.ToTable("inscriptoscarreras");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AlumnoId = 1,
+                            CarreraId = 1
+                        });
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Commons.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AlumnoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocenteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("TipoUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AlumnoId");
+
+                    b.HasIndex("DocenteId");
+
+                    b.ToTable("usuarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DocenteId = 1,
+                            Email = "admin@gmail.com",
+                            TipoUsuario = 2,
+                            User = "admin"
                         });
                 });
 
@@ -4646,6 +4710,135 @@ namespace Inscripciones.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Inscripciones.Models.Horarios.DetalleHorario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Dia")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HoraId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HorarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HoraId");
+
+                    b.HasIndex("HorarioId");
+
+                    b.ToTable("detalleshorarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Dia = 0,
+                            HoraId = 1,
+                            HorarioId = 1
+                        });
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Horarios.Hora", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("EsRecreo")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("horas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            EsRecreo = false,
+                            Nombre = "8:00hs a 9:00hs"
+                        });
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Horarios.Horario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CantidadHoras")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CicloLectivoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MateriaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CicloLectivoId");
+
+                    b.HasIndex("MateriaId");
+
+                    b.ToTable("horarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CantidadHoras = 4,
+                            CicloLectivoId = 1,
+                            MateriaId = 1
+                        });
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Horarios.IntegranteHorario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("DocenteId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HorarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocenteId");
+
+                    b.HasIndex("HorarioId");
+
+                    b.ToTable("integranteshorarios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DocenteId = 1,
+                            HorarioId = 1
+                        });
+                });
+
             modelBuilder.Entity("Inscripciones.Models.Inscripcion", b =>
                 {
                     b.Property<int>("Id")
@@ -4670,6 +4863,30 @@ namespace Inscripciones.Migrations
                     b.HasIndex("CarreraId");
 
                     b.ToTable("inscripciones");
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Inscripciones.CicloLectivo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("cicloslectivos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nombre = "2024"
+                        });
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Materia", b =>
@@ -6274,7 +6491,7 @@ namespace Inscripciones.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Inscripciones.Models.MesaExamen", b =>
+            modelBuilder.Entity("Inscripciones.Models.MesasExamenes.MesaExamen", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -7586,6 +7803,36 @@ namespace Inscripciones.Migrations
                     b.Navigation("Carrera");
                 });
 
+            modelBuilder.Entity("Inscripciones.Models.Commons.InscriptoCarrera", b =>
+                {
+                    b.HasOne("Inscripciones.Models.Alumno", "Alumno")
+                        .WithMany()
+                        .HasForeignKey("AlumnoId");
+
+                    b.HasOne("Inscripciones.Models.Carrera", "Carrera")
+                        .WithMany()
+                        .HasForeignKey("CarreraId");
+
+                    b.Navigation("Alumno");
+
+                    b.Navigation("Carrera");
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Commons.Usuario", b =>
+                {
+                    b.HasOne("Inscripciones.Models.Alumno", "Alumno")
+                        .WithMany()
+                        .HasForeignKey("AlumnoId");
+
+                    b.HasOne("Inscripciones.Models.Docente", "Docente")
+                        .WithMany()
+                        .HasForeignKey("DocenteId");
+
+                    b.Navigation("Alumno");
+
+                    b.Navigation("Docente");
+                });
+
             modelBuilder.Entity("Inscripciones.Models.DetalleInscripcion", b =>
                 {
                     b.HasOne("Inscripciones.Models.Inscripcion", "Inscripcion")
@@ -7613,7 +7860,7 @@ namespace Inscripciones.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Inscripciones.Models.MesaExamen", "MesaExamen")
+                    b.HasOne("Inscripciones.Models.MesasExamenes.MesaExamen", "MesaExamen")
                         .WithMany("DetallesMesaExamen")
                         .HasForeignKey("MesaExamenId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -7622,6 +7869,51 @@ namespace Inscripciones.Migrations
                     b.Navigation("Docente");
 
                     b.Navigation("MesaExamen");
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Horarios.DetalleHorario", b =>
+                {
+                    b.HasOne("Inscripciones.Models.Horarios.Hora", "Hora")
+                        .WithMany()
+                        .HasForeignKey("HoraId");
+
+                    b.HasOne("Inscripciones.Models.Horarios.Horario", "Horario")
+                        .WithMany()
+                        .HasForeignKey("HorarioId");
+
+                    b.Navigation("Hora");
+
+                    b.Navigation("Horario");
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Horarios.Horario", b =>
+                {
+                    b.HasOne("Inscripciones.Models.Inscripciones.CicloLectivo", "CicloLectivo")
+                        .WithMany()
+                        .HasForeignKey("CicloLectivoId");
+
+                    b.HasOne("Inscripciones.Models.Materia", "Materia")
+                        .WithMany()
+                        .HasForeignKey("MateriaId");
+
+                    b.Navigation("CicloLectivo");
+
+                    b.Navigation("Materia");
+                });
+
+            modelBuilder.Entity("Inscripciones.Models.Horarios.IntegranteHorario", b =>
+                {
+                    b.HasOne("Inscripciones.Models.Docente", "Docente")
+                        .WithMany()
+                        .HasForeignKey("DocenteId");
+
+                    b.HasOne("Inscripciones.Models.Horarios.Horario", "Horario")
+                        .WithMany()
+                        .HasForeignKey("HorarioId");
+
+                    b.Navigation("Docente");
+
+                    b.Navigation("Horario");
                 });
 
             modelBuilder.Entity("Inscripciones.Models.Inscripcion", b =>
@@ -7654,7 +7946,7 @@ namespace Inscripciones.Migrations
                     b.Navigation("AnioCarrera");
                 });
 
-            modelBuilder.Entity("Inscripciones.Models.MesaExamen", b =>
+            modelBuilder.Entity("Inscripciones.Models.MesasExamenes.MesaExamen", b =>
                 {
                     b.HasOne("Inscripciones.Models.Materia", "Materia")
                         .WithMany()
@@ -7673,7 +7965,7 @@ namespace Inscripciones.Migrations
                     b.Navigation("TurnoExamen");
                 });
 
-            modelBuilder.Entity("Inscripciones.Models.MesaExamen", b =>
+            modelBuilder.Entity("Inscripciones.Models.MesasExamenes.MesaExamen", b =>
                 {
                     b.Navigation("DetallesMesaExamen");
                 });

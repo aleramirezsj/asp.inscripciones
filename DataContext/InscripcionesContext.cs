@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Inscripciones.Models.Commons;
+using Inscripciones.Models.Horarios;
+using Inscripciones.Models.Inscripciones;
+using Inscripciones.Models.MesasExamenes;
+using Microsoft.EntityFrameworkCore;
 using System.Drawing.Drawing2D;
 
 namespace Inscripciones.Models
@@ -26,15 +30,15 @@ namespace Inscripciones.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region Datos semilla de carreras
-            var tsds = new Carrera { Id = 1, Nombre = "Tecnicatura Superior en Desarrollo de Software" };
-            var tssi = new Carrera { Id = 2, Nombre = "Tecnicatura Superior en Soporte de Infraestructura" };
-            var tsgo = new Carrera { Id = 3, Nombre = "Tecnicatura Superior en Gestion de las Organizaciones" };
-            var tse = new Carrera { Id = 4, Nombre = "Tecnicatura Superior en Enfermeria" };
-            var pesca = new Carrera { Id = 5, Nombre = "Profesorado de Educación Secundaria en Ciencias de la Administración" };
-            var pei = new Carrera { Id = 6, Nombre = "Profesorado de Educación Inicial" };
-            var pese = new Carrera { Id = 7, Nombre = "Profesorado de Educación Secundaria en Economía" };
-            var pet = new Carrera { Id = 8, Nombre = "Profesorado de Educación Tecnológica" };
-            var lcm = new Carrera { Id = 9, Nombre = "Licenciatura en Cooperativismo y Mutualismo" };
+            var tsds = new Carrera { Id = 1, Nombre = "Tecnicatura Superior en Desarrollo de Software", Sigla="TSDS" };
+            var tssi = new Carrera { Id = 2, Nombre = "Tecnicatura Superior en Soporte de Infraestructura", Sigla = "TSSITI" };
+            var tsgo = new Carrera { Id = 3, Nombre = "Tecnicatura Superior en Gestion de las Organizaciones", Sigla = "TSGO" };
+            var tse = new Carrera { Id = 4, Nombre = "Tecnicatura Superior en Enfermeria", Sigla = "TSE" };
+            var pesca = new Carrera { Id = 5, Nombre = "Profesorado de Educación Secundaria en Ciencias de la Administración", Sigla = "PEA" };
+            var pei = new Carrera { Id = 6, Nombre = "Profesorado de Educación Inicial", Sigla = "PEI" };
+            var pese = new Carrera { Id = 7, Nombre = "Profesorado de Educación Secundaria en Economía", Sigla = "PEE" };
+            var pet = new Carrera { Id = 8, Nombre = "Profesorado de Educación Tecnológica", Sigla = "PET" };
+            var lcm = new Carrera { Id = 9, Nombre = "Licenciatura en Cooperativismo y Mutualismo", Sigla = "LCM" };
             modelBuilder.Entity<Carrera>().HasData(tsds, tssi, tsgo, tse, pesca, pei, pese, pet, lcm);
             #endregion
 
@@ -446,10 +450,10 @@ namespace Inscripciones.Models
 
             modelBuilder.Entity<TurnoExamen>().HasData(turno);
             #endregion
-            #region datos semillas AniosLectivos
-            var anio = new AnioLectivo { Id = 1, Nombre = "2024" };
+            #region datos semillas CiclosLectivos
+            var ciclo = new CicloLectivo { Id = 1, Nombre = "2024" };
 
-            modelBuilder.Entity<AnioLectivo>().HasData(anio);
+            modelBuilder.Entity<CicloLectivo>().HasData(ciclo);
             #endregion
             #region datos semillas Docentes
             modelBuilder.Entity<Docente>().HasData(
@@ -948,6 +952,36 @@ namespace Inscripciones.Models
             modelBuilder.Entity<MesaExamen>().HasData(mesasExamen);
             modelBuilder.Entity<DetalleMesaExamen>().HasData(detallesMesaExamen);
             #endregion
+            #region datos semillas Horas
+            var hora = new Hora { Id = 1, Nombre = "8:00hs a 9:00hs", EsRecreo=false };
+
+            modelBuilder.Entity<Hora>().HasData(hora);
+            #endregion
+            #region datos semillas Horario
+            var horario = new Horario { Id = 1, MateriaId=1, CantidadHoras=4, CicloLectivoId =1 };
+
+            modelBuilder.Entity<Horario>().HasData(horario);
+            #endregion
+            #region datos semillas DetalleHorario
+            var detalleHorario = new DetalleHorario { Id = 1, HorarioId = 1, Dia = Enums.DiaEnum.Lunes, HoraId = 1 };
+
+            modelBuilder.Entity<DetalleHorario>().HasData(detalleHorario);
+            #endregion
+            #region datos semillas IntegranteHorario
+            var integranteHorario = new IntegranteHorario { Id = 1, DocenteId = 1, HorarioId= 1 };
+
+            modelBuilder.Entity<IntegranteHorario>().HasData(integranteHorario);
+            #endregion
+            #region datos semillas InscriptoCarrera
+            var inscriptoCarrera = new InscriptoCarrera { Id = 1, AlumnoId = 1, CarreraId = 1 };
+
+            modelBuilder.Entity<InscriptoCarrera>().HasData(inscriptoCarrera);
+            #endregion
+            #region datos semillas Usuarios
+            var usuario = new Usuario { Id = 1, User = "admin", Email = "admin@gmail.com", TipoUsuario= TipoUsuarioEnum.Directivo, DocenteId=1 };
+
+            modelBuilder.Entity<Usuario>().HasData(usuario);
+            #endregion
         }
 
         public virtual DbSet<Alumno> alumnos { get; set; }
@@ -957,10 +991,16 @@ namespace Inscripciones.Models
         public virtual DbSet<Materia> materias { get; set; }
         public virtual DbSet<DetalleInscripcion> detallesinscripciones { get; set; }
         public virtual DbSet<TurnoExamen> turnosexamenes { get; set; }
-        public virtual DbSet<AnioLectivo> anioslectivos { get; set; }
+        public virtual DbSet<CicloLectivo> cicloslectivos { get; set; }
         public virtual DbSet<Docente> docentes { get; set; }
         public virtual DbSet<MesaExamen> mesasexamenes { get; set; }
         public virtual DbSet<DetalleMesaExamen> detallesmesasexamenes { get; set; }
+        public virtual DbSet<Horario> horarios { get; set; }
+        public virtual DbSet<DetalleHorario> detalleshorarios { get; set; }
+        public virtual DbSet<IntegranteHorario> integranteshorarios { get; set; }
+        public virtual DbSet<Hora> horas { get; set; }
+        public virtual DbSet<InscriptoCarrera> inscriptoscarreras { get; set; }
+        public virtual DbSet<Usuario> usuarios { get; set; }
 
 
     }
