@@ -295,6 +295,7 @@ namespace Inscripciones.Models
                 new Materia { Id = 176, Nombre = "Seguridad de los Sistemas", AnioCarreraId = 6 },
                 new Materia { Id = 177, Nombre = "Administración de Sistemas Operativos y Redes", AnioCarreraId = 6 },
                 new Materia { Id = 178, Nombre = "Práctica Profesionalizante II", AnioCarreraId = 6 }
+                    
             };
 
             modelBuilder.Entity<Materia>().HasData(materiasEconomia);
@@ -425,11 +426,42 @@ namespace Inscripciones.Models
                 mm21, mm22, mm23, mm24, mm25, mm26, mm27, mm28, mm29, mm30,
                 mm31, mm32, mm33, mm34, mm35, mm36, mm37, mm38, mm39, mm40
             );
+            int initialId = 264;
+            modelBuilder.Entity<Materia>().HasData(
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 1 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 2 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 3 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 4 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 5 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 6 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 7 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 8 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 9 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 10 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 11 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 12 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 13 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 14 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 15 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 16 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 17 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 18 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 19 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 20 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 21 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 22 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 23 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 24 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 25 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 26 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 27 },
+                new Materia { Id = initialId++, Nombre = "Recreo", AnioCarreraId = 28 }
+                );
             #endregion
             #endregion
 
             #region datos semillas alumnos
-            var ale = new Alumno { Id = 1, ApellidoNombre = "Rubén Alejandro Ramirez", Email = "aleramirezsj@gmail.com", Direccion = "Bv Roque Saenz Peña 2942", Telefono = "15447106" };
+           var ale = new Alumno { Id = 1, ApellidoNombre = "Rubén Alejandro Ramirez", Email = "aleramirezsj@gmail.com", Direccion = "Bv Roque Saenz Peña 2942", Telefono = "15447106" };
 
             modelBuilder.Entity<Alumno>().HasData(ale);
             #endregion
@@ -539,7 +571,9 @@ namespace Inscripciones.Models
     new Docente { Id = 70, Nombre = "Tschopp, M.R." },
     new Docente { Id = 71, Nombre = "Verzzali, A." },
     new Docente { Id = 72, Nombre = "Vigniatti, E." },
-    new Docente { Id = 73, Nombre = "Villa, M.F." }
+    new Docente { Id = 73, Nombre = "Villa, M.F." },
+    new Docente { Id = 74, Nombre = "Ruiz, A." },
+    new Docente { Id = 75, Nombre = "Sager, L." }
         );
             #endregion
             #region datos semillas Mesas de examenes
@@ -963,9 +997,35 @@ namespace Inscripciones.Models
             modelBuilder.Entity<DetalleMesaExamen>().HasData(detallesMesaExamen);
             #endregion
             #region datos semillas Horas
-            var hora = new Hora { Id = 1, Nombre = "8:00hs a 9:00hs", EsRecreo=false };
 
-            modelBuilder.Entity<Hora>().HasData(hora);
+
+            modelBuilder.Entity<Hora>().HasData(
+                new Hora { Id = 1, Nombre = "08:00 - 08:40", EsRecreo = false },
+                new Hora { Id = 2, Nombre = "08:40 - 09:20", EsRecreo = false },
+                new Hora { Id = 3, Nombre = "09:20 - 10:00", EsRecreo = false },
+                new Hora { Id = 4, Nombre = "10:00 - 10:40", EsRecreo = false },
+                new Hora { Id = 5, Nombre = "10:40 - 10:50", EsRecreo = true },
+                new Hora { Id = 6, Nombre = "10:50 - 11:30", EsRecreo = false },
+                new Hora { Id = 7, Nombre = "11:30 - 12:10", EsRecreo = false },
+                new Hora { Id = 8, Nombre = "12:10 - 12:50", EsRecreo = false },
+                new Hora { Id = 9, Nombre = "12:50 - 13:30", EsRecreo = false },
+                new Hora { Id = 10, Nombre = "13:10 - 13:50", EsRecreo = false },
+                new Hora { Id = 11, Nombre = "13:50 - 14:30", EsRecreo = false },
+                new Hora { Id = 12, Nombre = "14:30 - 15:10", EsRecreo = false },
+                new Hora { Id = 13, Nombre = "15:10 - 15:50", EsRecreo = false },
+                new Hora { Id = 14, Nombre = "15:50 - 16:00", EsRecreo = true },
+                new Hora { Id = 15, Nombre = "16:00 - 16:40", EsRecreo = false },
+                new Hora { Id = 16, Nombre = "16:40 - 17:20", EsRecreo = false },
+                new Hora { Id = 17, Nombre = "17:20 - 18:00", EsRecreo = false },
+                new Hora { Id = 18, Nombre = "18:00 - 18:40", EsRecreo = false },
+                new Hora { Id = 19, Nombre = "18:40 - 19:20", EsRecreo = false },
+                new Hora { Id = 20, Nombre = "19:20 - 20:00", EsRecreo = false },
+                new Hora { Id = 21, Nombre = "19:30 - 19:40", EsRecreo = true },
+                new Hora { Id = 22, Nombre = "19:40 - 20:20", EsRecreo = false },
+                new Hora { Id = 23, Nombre = "20:20 - 21:00", EsRecreo = false },
+                new Hora { Id = 24, Nombre = "21:00 - 21:40", EsRecreo = false }
+
+                );
             #endregion
             #region datos semillas Horario
             var horario = new Horario { Id = 1, MateriaId=1, CantidadHoras=4, CicloLectivoId =1 };

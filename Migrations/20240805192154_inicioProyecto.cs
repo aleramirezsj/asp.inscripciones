@@ -517,13 +517,41 @@ namespace Inscripciones.Migrations
                     { 70, "Tschopp, M.R." },
                     { 71, "Verzzali, A." },
                     { 72, "Vigniatti, E." },
-                    { 73, "Villa, M.F." }
+                    { 73, "Villa, M.F." },
+                    { 74, "Ruiz, A." },
+                    { 75, "Sager, L." }
                 });
 
             migrationBuilder.InsertData(
                 table: "horas",
                 columns: new[] { "Id", "EsRecreo", "Nombre" },
-                values: new object[] { 1, false, "8:00hs a 9:00hs" });
+                values: new object[,]
+                {
+                    { 1, false, "08:00 - 08:40" },
+                    { 2, false, "08:40 - 09:20" },
+                    { 3, false, "09:20 - 10:00" },
+                    { 4, false, "10:00 - 10:40" },
+                    { 5, true, "10:40 - 10:50" },
+                    { 6, false, "10:50 - 11:30" },
+                    { 7, false, "11:30 - 12:10" },
+                    { 8, false, "12:10 - 12:50" },
+                    { 9, false, "12:50 - 13:30" },
+                    { 10, false, "13:10 - 13:50" },
+                    { 11, false, "13:50 - 14:30" },
+                    { 12, false, "14:30 - 15:10" },
+                    { 13, false, "15:10 - 15:50" },
+                    { 14, true, "15:50 - 16:00" },
+                    { 15, false, "16:00 - 16:40" },
+                    { 16, false, "16:40 - 17:20" },
+                    { 17, false, "17:20 - 18:00" },
+                    { 18, false, "18:00 - 18:40" },
+                    { 19, false, "18:40 - 19:20" },
+                    { 20, false, "19:20 - 20:00" },
+                    { 21, true, "19:30 - 19:40" },
+                    { 22, false, "19:40 - 20:20" },
+                    { 23, false, "20:20 - 21:00" },
+                    { 24, false, "21:00 - 21:40" }
+                });
 
             migrationBuilder.InsertData(
                 table: "turnosexamenes",
@@ -568,7 +596,7 @@ namespace Inscripciones.Migrations
             migrationBuilder.InsertData(
                 table: "inscripciones",
                 columns: new[] { "Id", "AlumnoId", "CarreraId", "CicloLectivoId", "Fecha" },
-                values: new object[] { 1, 1, 1, 1, new DateTime(2024, 8, 4, 12, 12, 53, 617, DateTimeKind.Local).AddTicks(4842) });
+                values: new object[] { 1, 1, 1, 1, new DateTime(2024, 8, 5, 16, 21, 53, 423, DateTimeKind.Local).AddTicks(251) });
 
             migrationBuilder.InsertData(
                 table: "inscriptoscarreras",
@@ -847,7 +875,35 @@ namespace Inscripciones.Migrations
                     { 260, 16, "Prácticas de Investigación" },
                     { 261, 16, "Práctica Docente IV (Residencia)" },
                     { 262, 16, "Producción de los Recursos Didácticos II" },
-                    { 263, 16, "Unidad de Definición Institucional" }
+                    { 263, 16, "Unidad de Definición Institucional" },
+                    { 264, 1, "Recreo" },
+                    { 265, 2, "Recreo" },
+                    { 266, 3, "Recreo" },
+                    { 267, 4, "Recreo" },
+                    { 268, 5, "Recreo" },
+                    { 269, 6, "Recreo" },
+                    { 270, 7, "Recreo" },
+                    { 271, 8, "Recreo" },
+                    { 272, 9, "Recreo" },
+                    { 273, 10, "Recreo" },
+                    { 274, 11, "Recreo" },
+                    { 275, 12, "Recreo" },
+                    { 276, 13, "Recreo" },
+                    { 277, 14, "Recreo" },
+                    { 278, 15, "Recreo" },
+                    { 279, 16, "Recreo" },
+                    { 280, 17, "Recreo" },
+                    { 281, 18, "Recreo" },
+                    { 282, 19, "Recreo" },
+                    { 283, 20, "Recreo" },
+                    { 284, 21, "Recreo" },
+                    { 285, 22, "Recreo" },
+                    { 286, 23, "Recreo" },
+                    { 287, 24, "Recreo" },
+                    { 288, 25, "Recreo" },
+                    { 289, 26, "Recreo" },
+                    { 290, 27, "Recreo" },
+                    { 291, 28, "Recreo" }
                 });
 
             migrationBuilder.InsertData(

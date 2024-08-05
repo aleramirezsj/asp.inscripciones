@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Inscripciones.Migrations
 {
     [DbContext(typeof(InscripcionesContext))]
-    [Migration("20240804151254_inicioProyecto")]
+    [Migration("20240805192154_inicioProyecto")]
     partial class inicioProyecto
     {
         /// <inheritdoc />
@@ -4716,6 +4716,16 @@ namespace Inscripciones.Migrations
                         {
                             Id = 73,
                             Nombre = "Villa, M.F."
+                        },
+                        new
+                        {
+                            Id = 74,
+                            Nombre = "Ruiz, A."
+                        },
+                        new
+                        {
+                            Id = 75,
+                            Nombre = "Sager, L."
                         });
                 });
 
@@ -4778,7 +4788,145 @@ namespace Inscripciones.Migrations
                         {
                             Id = 1,
                             EsRecreo = false,
-                            Nombre = "8:00hs a 9:00hs"
+                            Nombre = "08:00 - 08:40"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            EsRecreo = false,
+                            Nombre = "08:40 - 09:20"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            EsRecreo = false,
+                            Nombre = "09:20 - 10:00"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            EsRecreo = false,
+                            Nombre = "10:00 - 10:40"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            EsRecreo = true,
+                            Nombre = "10:40 - 10:50"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            EsRecreo = false,
+                            Nombre = "10:50 - 11:30"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            EsRecreo = false,
+                            Nombre = "11:30 - 12:10"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            EsRecreo = false,
+                            Nombre = "12:10 - 12:50"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            EsRecreo = false,
+                            Nombre = "12:50 - 13:30"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            EsRecreo = false,
+                            Nombre = "13:10 - 13:50"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            EsRecreo = false,
+                            Nombre = "13:50 - 14:30"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            EsRecreo = false,
+                            Nombre = "14:30 - 15:10"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            EsRecreo = false,
+                            Nombre = "15:10 - 15:50"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            EsRecreo = true,
+                            Nombre = "15:50 - 16:00"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            EsRecreo = false,
+                            Nombre = "16:00 - 16:40"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            EsRecreo = false,
+                            Nombre = "16:40 - 17:20"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            EsRecreo = false,
+                            Nombre = "17:20 - 18:00"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            EsRecreo = false,
+                            Nombre = "18:00 - 18:40"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            EsRecreo = false,
+                            Nombre = "18:40 - 19:20"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            EsRecreo = false,
+                            Nombre = "19:20 - 20:00"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            EsRecreo = true,
+                            Nombre = "19:30 - 19:40"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            EsRecreo = false,
+                            Nombre = "19:40 - 20:20"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            EsRecreo = false,
+                            Nombre = "20:20 - 21:00"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            EsRecreo = false,
+                            Nombre = "21:00 - 21:40"
                         });
                 });
 
@@ -4885,7 +5033,7 @@ namespace Inscripciones.Migrations
                             AlumnoId = 1,
                             CarreraId = 1,
                             CicloLectivoId = 1,
-                            Fecha = new DateTime(2024, 8, 4, 12, 12, 53, 617, DateTimeKind.Local).AddTicks(4842)
+                            Fecha = new DateTime(2024, 8, 5, 16, 21, 53, 423, DateTimeKind.Local).AddTicks(251)
                         });
                 });
 
@@ -6512,6 +6660,174 @@ namespace Inscripciones.Migrations
                             Id = 263,
                             AnioCarreraId = 16,
                             Nombre = "Unidad de Definición Institucional"
+                        },
+                        new
+                        {
+                            Id = 264,
+                            AnioCarreraId = 1,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 265,
+                            AnioCarreraId = 2,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 266,
+                            AnioCarreraId = 3,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 267,
+                            AnioCarreraId = 4,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 268,
+                            AnioCarreraId = 5,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 269,
+                            AnioCarreraId = 6,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 270,
+                            AnioCarreraId = 7,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 271,
+                            AnioCarreraId = 8,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 272,
+                            AnioCarreraId = 9,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 273,
+                            AnioCarreraId = 10,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 274,
+                            AnioCarreraId = 11,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 275,
+                            AnioCarreraId = 12,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 276,
+                            AnioCarreraId = 13,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 277,
+                            AnioCarreraId = 14,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 278,
+                            AnioCarreraId = 15,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 279,
+                            AnioCarreraId = 16,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 280,
+                            AnioCarreraId = 17,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 281,
+                            AnioCarreraId = 18,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 282,
+                            AnioCarreraId = 19,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 283,
+                            AnioCarreraId = 20,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 284,
+                            AnioCarreraId = 21,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 285,
+                            AnioCarreraId = 22,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 286,
+                            AnioCarreraId = 23,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 287,
+                            AnioCarreraId = 24,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 288,
+                            AnioCarreraId = 25,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 289,
+                            AnioCarreraId = 26,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 290,
+                            AnioCarreraId = 27,
+                            Nombre = "Recreo"
+                        },
+                        new
+                        {
+                            Id = 291,
+                            AnioCarreraId = 28,
+                            Nombre = "Recreo"
                         });
                 });
 
