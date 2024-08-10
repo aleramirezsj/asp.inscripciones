@@ -23,8 +23,27 @@ namespace Inscripciones.ApiControllers.Horarios
 
         // GET: api/ApiHorarios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Horario>>> Gethorarios()
+        public async Task<ActionResult<IEnumerable<Horario>>> Gethorarios([FromQuery]int? idCicloLectivo, int? idCarrera, int? idAnioCarrera)
         {
+            if (idAnioCarrera != null && idCicloLectivo!=null)
+            {
+                return await _context.horarios.Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.Materia.AnioCarreraId.Equals(idAnioCarrera)&&h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+            }
+            else
+            {
+                if (idCarrera != null && idCicloLectivo != null)
+                {
+                    return await _context.horarios.Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.Materia.AnioCarrera.CarreraId.Equals(idCarrera) && h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                }
+                else
+                {
+                    if(idCicloLectivo != null)
+                    {
+                        return await _context.horarios.Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                    }
+                }    
+            }
+                
             return await _context.horarios.ToListAsync();
         }
 
