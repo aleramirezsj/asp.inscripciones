@@ -27,19 +27,19 @@ namespace Inscripciones.ApiControllers.Horarios
         {
             if (idAnioCarrera != null && idCicloLectivo!=null)
             {
-                return await _context.horarios.Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.Materia.AnioCarreraId.Equals(idAnioCarrera)&&h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                return await _context.horarios.Include(h=>h.DetallesHorario).ThenInclude(d=>d.Hora).Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.Materia.AnioCarreraId.Equals(idAnioCarrera)&&h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
             }
             else
             {
                 if (idCarrera != null && idCicloLectivo != null)
                 {
-                    return await _context.horarios.Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.Materia.AnioCarrera.CarreraId.Equals(idCarrera) && h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                    return await _context.horarios.Include(h => h.DetallesHorario).ThenInclude(d => d.Hora).Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.Materia.AnioCarrera.CarreraId.Equals(idCarrera) && h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
                 }
                 else
                 {
                     if(idCicloLectivo != null)
                     {
-                        return await _context.horarios.Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                        return await _context.horarios.Include(h => h.DetallesHorario).ThenInclude(d => d.Hora).Include(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(h => h.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
                     }
                 }    
             }
