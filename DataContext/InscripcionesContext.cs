@@ -1,4 +1,5 @@
-﻿using Inscripciones.Models.Commons;
+﻿using Inscripciones.Enums;
+using Inscripciones.Models.Commons;
 using Inscripciones.Models.Horarios;
 using Inscripciones.Models.Inscripciones;
 using Inscripciones.Models.MesasExamenes;
@@ -1027,20 +1028,2098 @@ namespace Inscripciones.Models
 
                 );
             #endregion
-            #region datos semillas Horario
-            var horario = new Horario { Id = 1, MateriaId=1, CantidadHoras=4, CicloLectivoId =1 };
+            #region metodos datos semillas Horario DetalleHorario IntegranteHorario
+            var horarioId = 1;
+            var horarios = new List<Horario>();
+            var detalleHorarioId = 1;
+            var detallesHorario = new List<DetalleHorario>();
+            var integranteHorarioId= 1;
+            var integrantesHorario = new List<IntegranteHorario>();
+            void AgregarHorario(int materiaId, int cantidadHoras, int cicloLectivoId)
+            {
+                horarios.Add(new Horario
+                {
+                    Id = horarioId++,
+                    MateriaId = materiaId,
+                    CantidadHoras = cantidadHoras,
+                    CicloLectivoId = cicloLectivoId
+                });
+            }
 
-            modelBuilder.Entity<Horario>().HasData(horario);
+            void AgregarDetalleHorario(int horarioId, DiaEnum dia, int horaId)
+            {
+                detallesHorario.Add(new DetalleHorario
+                {
+                    Id = detalleHorarioId++,
+                    HorarioId = horarioId,
+                    Dia = dia,
+                    HoraId = horaId
+                });
+            }
+
+            void AgregarIntegranteHorario(int horarioId, int docenteId)
+            {
+                integrantesHorario.Add(new IntegranteHorario
+                {
+                    Id = integranteHorarioId++,
+                    HorarioId = horarioId,
+                    DocenteId = docenteId
+                });
+            }
+
+
             #endregion
-            #region datos semillas DetalleHorario
-            var detalleHorario = new DetalleHorario { Id = 1, HorarioId = 1, Dia = Enums.DiaEnum.Lunes, HoraId = 1 };
+            #region tecnologia
+            // 1er año - Profesorado de Educación Tecnológica
 
-            modelBuilder.Entity<DetalleHorario>().HasData(detalleHorario);
+            // Matemática
+            AgregarHorario(44, 8, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Brussa
+
+            // Pedagogía
+            AgregarHorario(38, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarIntegranteHorario(horarioId - 1, 71); // Verzzali
+
+            // Física
+            AgregarHorario(45, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarIntegranteHorario(horarioId - 1, 38); // Imhof
+
+            // Práctica Docente I
+            AgregarHorario(40, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Villa
+            AgregarIntegranteHorario(horarioId - 1, 6);  // Arnolfo
+
+            // Movimiento y Cuerpo
+            AgregarHorario(39, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 8);
+            AgregarIntegranteHorario(horarioId - 1, 65); // Sancho
+
+            // Introducción a la Tecnología
+            AgregarHorario(41, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 8);
+            AgregarIntegranteHorario(horarioId - 1, 66); // Sara
+
+            // Diseño y Producción Tecnológica I
+            AgregarHorario(43, 7, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 8);
+            AgregarIntegranteHorario(horarioId - 1, 38); // Imhof
+
+            // Historia de la Tecnología
+            AgregarHorario(42, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 8);
+            AgregarIntegranteHorario(horarioId - 1, 6); // Arnolfo
+
+            // Recreo
+            AgregarHorario(264, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+
+            // 2do año - Profesorado de Educación Tecnológica
+
+            // Sujetos de la Educación I
+            AgregarHorario(50, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Villa
+
+            // Didáctica y Curriculum
+            AgregarHorario(47, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra
+
+            // Psicología de la Educación
+            AgregarHorario(46, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Instituciones Educativas
+            AgregarHorario(48, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Villa
+
+            // Práctica Docente II
+            AgregarHorario(49, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Villa
+            AgregarIntegranteHorario(horarioId - 1, 26); // Epes
+
+            // Procesos Productivos
+            AgregarHorario(52, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 47); // Miñoz
+
+            // Diseño y Producción Tecnológica II
+            AgregarHorario(53, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarIntegranteHorario(horarioId - 1, 38); // Imhof
+
+            // TICs para la Enseñanza
+            AgregarHorario(51, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 24);
+            AgregarIntegranteHorario(horarioId - 1, 29); // Ferrero
+
+            // Didáctica Específica I
+            AgregarHorario(54, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 23);
+            AgregarIntegranteHorario(horarioId - 1, 6); // Arnolfo
+
+            // 3er año - Profesorado de Educación Tecnológica
+
+            // Química
+            AgregarHorario(61, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarIntegranteHorario(horarioId - 1, 23); // Dellaferrera
+
+            // Metodología de la Investigación
+            AgregarHorario(57, 2, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 44); // Manattini
+
+            // Tecnologías Regionales
+            AgregarHorario(63, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarIntegranteHorario(horarioId - 1, 66); // Sara
+
+            // Filosofía y Educación
+            AgregarHorario(55, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Didáctica Específica II
+            AgregarHorario(65, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarIntegranteHorario(horarioId - 1, 6); // Arnolfo
+
+            // Procesos de Control
+            AgregarHorario(62, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 19);
+            AgregarIntegranteHorario(horarioId - 1, 16); // Cavallini
+
+            // Sujetos de la Educación II
+            AgregarHorario(59, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 19);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Villa
+
+            // Diseño y Producción Tecnológica III
+            AgregarHorario(64, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 24);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 6); // Arnolfo
+
+            // Práctica Docente III
+            AgregarHorario(58, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Vignatti
+            AgregarIntegranteHorario(horarioId - 1, 66); // Sara
+
+            // Historia Social de la Educación
+            AgregarHorario(56, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 23);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra
+
+            // 4to año - Profesorado de Educación Tecnológica
+
+            // Educación Sexual Integral
+            AgregarHorario(67, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(horarioId - 1, 54); // Pereyra
+
+            // Taller de Producción Didáctica
+            AgregarHorario(76, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 19);
+            AgregarIntegranteHorario(horarioId - 1, 66); // Sara
+
+            // Diseño y Producción Tecnológica IV
+            AgregarHorario(75, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarIntegranteHorario(horarioId - 1, 66); // Sara
+
+            // Práctica Docente IV
+            AgregarHorario(71, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarIntegranteHorario(horarioId - 1, 75); // Sager
+            AgregarIntegranteHorario(horarioId - 1, 66); // Sara
+
+            // Biotecnología
+            AgregarHorario(72, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarIntegranteHorario(horarioId - 1, 23); // Dellaferrera
+
+            // Ética y Trabajo Docente
+            AgregarHorario(66, 2, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Procesos de Comunicación
+            AgregarHorario(73, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 16); // Cavallini
+
+            // Unidad de Definición Institucional
+            AgregarHorario(68, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 45); // Martínez
+
+            // Prácticas de Investigación
+            AgregarHorario(70, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 24);
+            AgregarIntegranteHorario(horarioId - 1, 75); // Sager
+            AgregarIntegranteHorario(horarioId - 1, 66); // Sara
+
+            // Recreo
+            AgregarHorario(291, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 21);
             #endregion
-            #region datos semillas IntegranteHorario
-            var integranteHorario = new IntegranteHorario { Id = 1, DocenteId = 1, HorarioId= 1 };
+            #region tsgo
+            // Primer año
+            AgregarHorario(129, 3, 1); // Economía
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 34); // Gongora L.
 
-            modelBuilder.Entity<IntegranteHorario>().HasData(integranteHorario);
+            AgregarHorario(135, 4, 1); // Gestión del Capital Humano
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar M.A.
+
+            AgregarHorario(134, 4, 1); // Gestión de la Producción
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarIntegranteHorario(horarioId - 1, 67); // Strada J.
+
+            AgregarHorario(131, 4, 1); // Contabilidad
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarIntegranteHorario(horarioId - 1, 48); // Molina T.
+
+            AgregarHorario(130, 4, 1); // Matemática y Estadística
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 36); // Gretter C.
+
+            AgregarHorario(133, 3, 1); // Administración
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 47); // Miñoz A.
+
+            AgregarHorario(127, 3, 1); // Comunicación
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 24);
+            AgregarIntegranteHorario(horarioId - 1, 31); // Gaido J.P.
+
+            AgregarHorario(132, 3, 1); // Informática
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 64); // Sandoval P.
+
+            // Segundo año
+            AgregarHorario(141, 5, 1); // Gestión de la Comercialización
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 17); // Chauderon L.
+
+            AgregarHorario(138, 3, 1); // Innovación y Desarrollo Emprendedor
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(horarioId - 1, 34); // Gongora L.
+
+            AgregarHorario(144, 4, 1); // Práctica Profesionalizante I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarIntegranteHorario(horarioId - 1, 29); // Ferrero Marcela
+
+            AgregarHorario(142, 3, 1); // Gestión de Costos
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 34); // Gongora L.
+
+            AgregarHorario(140, 3, 1); // Legislación Comercial y Tributaria
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria M.D.
+
+            AgregarHorario(139, 3, 1); // Inglés Técnico
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 37); // Grosso S.
+
+            AgregarHorario(143, 3, 1); // Gestión Contable
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 24);
+            AgregarIntegranteHorario(horarioId - 1, 34); // Gongora L.
+
+            AgregarHorario(136, 3, 1); // Problemáticas Contemporáneas
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 63); // Sanchez
+
+            // Tercer año
+            AgregarHorario(148, 4, 1); // Estrategia Empresarial
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarIntegranteHorario(horarioId - 1, 33); // Genero A.
+
+            AgregarHorario(153, 3, 1); // Práctica Profesionalizante II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 29); // Ferrero M.
+
+            AgregarHorario(145, 3, 1); // Gestión de Seguridad, Salud Ocupacional y M.A.
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(horarioId - 1, 67); // Strada J.
+
+            AgregarHorario(152, 3, 1); // Gestión de Control
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 18); // Chelini V.
+
+            AgregarHorario(151, 3, 1); // Evaluación Proyectos de Inversión
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarIntegranteHorario(horarioId - 1, 18); // Chelini V.
+
+            AgregarHorario(147, 3, 1); // Legislación Laboral
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 29); // Ferrero M.
+
+            AgregarHorario(149, 3, 1); // Sistema de Información para la Gestión de las Org.
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 24);
+            AgregarIntegranteHorario(horarioId - 1, 47); // Miñoz A.
+
+            AgregarHorario(150, 3, 1); // Gestión Financiera
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 18); // Chelini V.
+
+            // Agregar recreos
+            AgregarHorario(273, 1, 1); // Recreo
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 21);
+            #endregion
+            #region infraestructura
+            // 1° Año - Tecnicatura Superior en Infraestructura
+
+            // Infraestructura de Redes
+            AgregarHorario(162, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 46); // Mendoza M.
+
+            // Inglés Técnico
+            AgregarHorario(159, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(horarioId - 1, 57); // Puccio
+
+            // Comunicación
+            AgregarHorario(154, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarIntegranteHorario(horarioId - 1, 31); // Gaido
+
+            // Matemática
+            AgregarHorario(156, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 19);
+            AgregarIntegranteHorario(horarioId - 1, 58); // Quaglia
+
+            // Arquitectura de las Computadoras
+            AgregarHorario(160, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 53); // Pedrazzoli
+
+            // Lógica y Programación
+            AgregarHorario(161, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 24);
+            AgregarIntegranteHorario(horarioId - 1, 15); // Calvo M
+
+            // Administración
+            AgregarHorario(158, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 24);
+            AgregarIntegranteHorario(horarioId - 1, 47); // Miñoz
+
+            // Física Aplicada a las Tecnologías de la Información
+            AgregarHorario(157, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 53); // Pedrazzoli
+
+            // Recreo
+            AgregarHorario(268, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 21);
+            // 2° Año - Tecnicatura Superior en Infraestructura
+
+            // Algoritmo y Estructura de Datos
+            AgregarHorario(168, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(horarioId - 1, 46); // Mendoza
+
+            // Sistemas Operativos
+            AgregarHorario(167, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarIntegranteHorario(horarioId - 1, 64); // Sandoval P
+
+            // Innovación y Desarrollo Emprendedor
+            AgregarHorario(165, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 35); // Gongora L.
+
+            // Problemáticas Contemporáneas
+            AgregarHorario(163, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 42); // Mancilla
+
+            // Base de Datos
+            AgregarHorario(169, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 46); // Mendoza
+
+            // Infraestructura de Redes II
+            AgregarHorario(170, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 5); // Alesso M.
+
+            // Estadística
+            AgregarHorario(166, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarIntegranteHorario(horarioId - 1, 11); // Brussa
+
+            // Práctica Profesionalizante I
+            AgregarHorario(171, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 24);
+            AgregarIntegranteHorario(horarioId - 1, 21); // Degiorgio O
+
+            // Recreo
+            AgregarHorario(269, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 21);
+
+            // 3° Año - Tecnicatura Superior en Infraestructura
+
+            // Práctica Profesionalizante II
+            AgregarHorario(178, 8, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 24);
+            AgregarIntegranteHorario(horarioId - 1, 46); // Mendoza M.
+
+            // Derecho y Legislación Laboral
+            AgregarHorario(173, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 29); // Ferrero M.
+
+            // Seguridad en los Sistemas
+            AgregarHorario(176, 5, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 22);
+            AgregarIntegranteHorario(horarioId - 1, 46); // Mendoza M.
+
+            // Administración Base de Datos
+            AgregarHorario(174, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Administración de Sistemas Operativos y Redes
+            AgregarHorario(177, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 46); // Mendoza
+
+            // Integridad y Migración de Datos
+            AgregarHorario(175, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 24);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Recreo
+            AgregarHorario(270, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 21);
+            #endregion
+            #region software
+            // 1° Año - Tecnicatura Superior en Desarrollo de Software
+
+            // Administración
+            AgregarHorario(81, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 47); // Miñoz A.
+
+            // Ingeniería de Software I
+            AgregarHorario(84, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 5); // Alesso M.
+
+            // Inglés Técnico I
+            AgregarHorario(80, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarIntegranteHorario(horarioId - 1, 57); // Puccio D.
+
+            // Comunicación
+            AgregarHorario(77, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 31); // Gaido JP
+
+            // Matemática
+            AgregarHorario(79, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarIntegranteHorario(horarioId - 1, 11); // Brussa G.
+
+            // Lógica y Estructura de Datos
+            AgregarHorario(83, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 15); // Calvo M.
+
+            // Tecnología de la Información
+            AgregarHorario(82, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarIntegranteHorario(horarioId - 1, 53); // Pedrazzoli F.
+
+            // Sistemas Operativos
+            AgregarHorario(85, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 64); // Sandoval P.
+
+            // Recreo
+            AgregarHorario(264, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 14);
+
+            // 2° Año - Tecnicatura Superior en Desarrollo de Software
+
+            // Programación I
+            AgregarHorario(91, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Estadística
+            AgregarHorario(90, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarIntegranteHorario(horarioId - 1, 11); // Brussa G.
+
+            // Práctica Profesionalizante I
+            AgregarHorario(94, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Innovación y Desarrollo Emprendedor
+            AgregarHorario(89, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 35); // Gongora L.
+
+            // Base de Datos I
+            AgregarHorario(93, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Problemáticas Contemporáneas
+            AgregarHorario(86, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 22); // Della Rosa M.
+
+            // Inglés Técnico II
+            AgregarHorario(88, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 37); // Grosso S.
+
+            // Ingeniería de Software II
+            AgregarHorario(92, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 24);
+            AgregarIntegranteHorario(horarioId - 1, 4); // Alesso A.
+
+            // Recreo
+            AgregarHorario(265, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 14);
+
+            // 3° Año - Tecnicatura Superior en Desarrollo de Software
+
+            // Gestión de Proyectos de Software
+            AgregarHorario(99, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Derecho y Legislación Laboral
+            AgregarHorario(96, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarIntegranteHorario(horarioId - 1, 29); // Ferrero M.
+
+            // Programación II
+            AgregarHorario(98, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Redes y Comunicación
+            AgregarHorario(97, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarIntegranteHorario(horarioId - 1, 5); // Alesso M.
+
+            // Base de Datos II
+            AgregarHorario(100, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 59); // Ramirez R.A.
+
+            // Práctica Profesionalizante II
+            AgregarHorario(101, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 23);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 24);
+            AgregarIntegranteHorario(horarioId - 1, 4); // Alesso A.
+
+            // Recreo
+            AgregarHorario(266, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 14);
+            #endregion
+            #region enfermeria
+            // Ciclo lectivo 2024
+            int cicloLectivoId = 1;
+
+            // 1° AÑO TÉCNICO SUPERIOR EN ENFERMERÍA
+
+            // Salud Pública
+            AgregarHorario(104, 3, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 61); // Rodriguez Quain J.
+
+            // Comunicación
+            AgregarHorario(102, 3, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarIntegranteHorario(horarioId - 1, 8); // Blanche C.
+
+            // Cuidados de Enfermería en la Comunidad y Familia
+            AgregarHorario(108, 3, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 3); // Albaristo Stef.
+
+            // Sujeto Cultura y Sociedad
+            AgregarHorario(106, 3, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarIntegranteHorario(horarioId - 1, 61); // Rodriguez Quain J.
+
+            // Práctica Profesionalizante I
+            AgregarHorario(109, 6, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarIntegranteHorario(horarioId - 1, 51); // Ortiz L.
+
+            // Biología
+            AgregarHorario(105, 3, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarIntegranteHorario(horarioId - 1, 54); // Pereyra S.
+
+            // Fundamentos del Cuidado de Enfermería
+            AgregarHorario(107, 4, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            AgregarIntegranteHorario(horarioId - 1, 3); // Albaristo Stef.
+
+            // Recreos
+            AgregarHorario(264, 1, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarHorario(265, 1, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarHorario(266, 1, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarHorario(267, 1, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 5);
+            AgregarHorario(268, 1, cicloLectivoId);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 5);
+            // 2do año
+
+            // Práctica Profesionalizante II
+            AgregarHorario(118, 26, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            AgregarIntegranteHorario(horarioId - 1, 51); // Ortiz L.
+
+            // Cuidados de Enfermería a Adultos y Adultos Mayores
+            AgregarHorario(117, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarIntegranteHorario(horarioId - 1, 32); // Galmes M.
+
+            // Sujeto, Cultura y Sociedad II
+            AgregarHorario(113, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarIntegranteHorario(horarioId - 1, 61); // Rodriguez Quain J.
+
+            // Farmacología en Enfermería
+            AgregarHorario(116, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarIntegranteHorario(horarioId - 1, 9); // Bogni J.
+
+            // Unidad de Definición Institucional II
+            AgregarHorario(111, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarIntegranteHorario(horarioId - 1, 49); // Monzón M.C.
+
+            // Bioseguridad y Medio Ambiente en el Trabajo
+            AgregarHorario(115, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 7);
+            AgregarIntegranteHorario(horarioId - 1, 24); // Doglioli M.
+
+            // Biología Humana II
+            AgregarHorario(114, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 54); // Pereyra S.
+
+            // Recreo
+            AgregarHorario(265, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+
+            // 3er año
+
+            // Práctica Profesionalizante III
+            AgregarHorario(126, 26, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 32); // Galmes M.
+
+            // Investigación en Enfermería
+            AgregarHorario(123, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 9); // Bogni J.
+
+            // Cuidados de Enfermería al Niño y al Adolescente
+            AgregarHorario(125, 6, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarIntegranteHorario(horarioId - 1, 3); // Albaristo Stef.
+
+            // Organización y Gestión en Instituciones de Salud
+            AgregarHorario(122, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarIntegranteHorario(horarioId - 1, 25); // Duran
+
+            // Cuidados de Enfermería en Salud Mental
+            AgregarHorario(124, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 8);
+            AgregarIntegranteHorario(horarioId - 1, 61); // Rodriguez Quain J.
+
+            // Derecho y Legislación Laboral
+            AgregarHorario(121, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 7);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferr N.
+
+            // Recreo
+            AgregarHorario(265, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            #endregion
+            #region administración
+            // 1° AÑO PROFESORADO DE ADMINISTRACIÓN
+
+            // Sociología
+            AgregarHorario(2, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 42); // Mancilla
+
+            // Sistema de Información Contable I
+            AgregarHorario(8, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 13);
+            AgregarIntegranteHorario(horarioId - 1, 35); // Gongora
+
+            // Matemática
+            AgregarHorario(9, 5, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarIntegranteHorario(horarioId - 1, 44); // Marenoni
+
+            // Historia Económica
+            AgregarHorario(6, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria
+
+            // Administración I
+            AgregarHorario(226, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 17); // Chauderon
+
+            // Construcción de Ciudadanía
+            AgregarHorario(7, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Pedagogía
+            AgregarHorario(1, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra
+
+            // Práctica Docente I
+            AgregarHorario(10, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarIntegranteHorario(horarioId - 1, 48); // Molina
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Administración General
+            AgregarHorario(3, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 17); // Chauderon
+
+            // Recreo
+            AgregarHorario(265, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 14);
+
+            // 2° AÑO PROFESORADO DE ADMINISTRACIÓN
+
+            // Práctica Docente II
+            AgregarHorario(19, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 20); // Dalesio
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Administración II
+            AgregarHorario(236, 5, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            // Psicología y Educación
+            AgregarHorario(13, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Vigniatti
+
+            // Instituciones Educativas
+            AgregarHorario(11, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 49); // Monzon
+
+            // SIC II
+            AgregarHorario(15, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarIntegranteHorario(horarioId - 1, 35); // Gongora
+
+            // Estadística Aplicada
+            AgregarHorario(17, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(horarioId - 1, 11); // Brussa
+
+            // Economía
+            AgregarHorario(14, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 13);
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria
+
+            // Didáctica y Curriculum
+            AgregarHorario(12, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra
+
+            // Derecho I
+            AgregarHorario(16, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferri
+
+            // Didáctica Específica
+            AgregarHorario(18, 3, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 18); // Chelini
+
+            // Recreo
+            AgregarHorario(265, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 14);
+            // 3rd year Profesorado de Administración
+
+            // Monday
+            AgregarHorario(23, 3, 1); // Metodología de la Investigación
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 71); // Verzzali
+
+            AgregarHorario(20, 3, 1); // Historia y Política Educativa
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra
+
+            AgregarHorario(253, 2, 1); // Producción de Recursos
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 48); // Molina
+
+            // Tuesday
+            AgregarHorario(25, 2, 1); // Derecho II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 11);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferri
+
+            AgregarHorario(247, 2, 1); // SIC III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 35); // Gongora
+
+            AgregarHorario(251, 2, 1); // Sujeto de Ed. Secundaria
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Vigniatti
+
+            AgregarHorario(246, 2, 1); // Administración III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 22); // Della Rosa
+
+            // Wednesday
+            AgregarHorario(246, 2, 1); // Administración III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 11);
+            AgregarIntegranteHorario(horarioId - 1, 22); // Della Rosa
+
+            AgregarHorario(248, 3, 1); // Práctica Imp. y Laboral
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarIntegranteHorario(horarioId - 1, 47); // Miñoz, A
+
+            AgregarHorario(25, 2, 1); // Derecho II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferri
+
+            // Thursday
+            AgregarHorario(247, 2, 1); // SIC III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 11);
+            AgregarIntegranteHorario(horarioId - 1, 35); // Gongora
+
+            AgregarHorario(251, 2, 1); // Sujeto de Ed. Secundaria
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 13);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Vigniatti
+
+            AgregarHorario(252, 3, 1); // Práctica Docente III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarIntegranteHorario(horarioId - 1, 74); // Ruiz
+            AgregarIntegranteHorario(horarioId - 1, 49); // Monzon
+
+            // Friday
+            AgregarHorario(250, 3, 1); // Didáctica Específica
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            AgregarHorario(21, 3, 1); // Filosofía
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra, M
+
+            // Add recreo
+            AgregarHorario(268, 1, 1); // Recreo
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 14);
+
+            // Now for the 4th year:
+
+            // Monday
+            AgregarHorario(258, 3, 1); // Gestión Organizacional
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 55); // Peresin
+
+            AgregarHorario(259, 3, 1); // Matemática Financiera
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 48); // Molina
+
+            // Tuesday
+            AgregarHorario(263, 3, 1); // UDI
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 64); // Sandoval
+
+            AgregarHorario(262, 3, 1); // Producción de Recursos II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 22); // Della Rosa
+
+            // Wednesday
+            AgregarHorario(257, 3, 1); // Administración IV
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 15);
+            AgregarIntegranteHorario(horarioId - 1, 22); // Della Rosa
+
+            AgregarHorario(260, 3, 1); // Práctica de Investigación
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(horarioId - 1, 36); // Gretter
+            AgregarIntegranteHorario(horarioId - 1, 74); // Ruiz
+
+            // Thursday
+            AgregarHorario(256, 3, 1); // Comunicación Social
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 13);
+            AgregarIntegranteHorario(horarioId - 1, 31); // Gaido
+
+            AgregarHorario(261, 3, 1); // Práctica Docente IV
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarIntegranteHorario(horarioId - 1, 27); // Espru
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria
+
+            // Friday
+            AgregarHorario(255, 3, 1); // ESI
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 71); // Verzzali
+
+            AgregarHorario(254, 3, 1); // Ética y Trabajo Docente
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 40); // Lodi
+
+            // Add recreo
+            AgregarHorario(269, 1, 1); // Recreo
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 14);
+            #endregion
+            #region economía
+            // 1er año Profesorado de Economía
+
+            // Lunes
+            AgregarHorario(9, 3, 1); // Matemática
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 44); // Marenoni
+
+            AgregarHorario(2, 3, 1); // Sociología
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 42); // Mancilla
+
+            AgregarHorario(3, 2, 1); // Administración General
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 8);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 9);
+            AgregarIntegranteHorario(horarioId - 1, 17); // Chauderon
+
+            // Martes
+            AgregarHorario(1, 3, 1); // Pedagogía
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra
+
+            AgregarHorario(4, 2, 1); // Economía I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Buceta
+
+            AgregarHorario(3, 2, 1); // Administración General
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 8);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 9);
+            AgregarIntegranteHorario(horarioId - 1, 17); // Chauderon
+
+            // Miércoles
+            AgregarHorario(5, 4, 1); // Geografía Económica
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 4);
+            AgregarIntegranteHorario(horarioId - 1, 35); // Gomez
+
+            AgregarHorario(9, 2, 1); // Matemática
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarIntegranteHorario(horarioId - 1, 44); // Marenoni
+
+            AgregarHorario(4, 2, 1); // Economía I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 8);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 9);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Buceta
+
+            // Jueves
+            AgregarHorario(8, 2, 1); // SIC I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            AgregarHorario(6, 2, 1); // Historia Económica
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 4);
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria
+
+            AgregarHorario(10, 3, 1); // Práctica Docente I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 8);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Buceta
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Viernes
+            AgregarHorario(7, 3, 1); // Construcción de Ciudadanía
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 71); // Verzzali
+
+            AgregarHorario(8, 3, 1); // SIC I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            AgregarHorario(6, 2, 1); // Historia Económica
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 8);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 9);
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria
+
+            // Agregar recreos
+            AgregarHorario(264, 1, 1); // Recreo
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 5);
+            // 2do año Profesorado de Economía
+
+            // Lunes
+            AgregarHorario(19, 3, 1); // Práctica Docente II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Buceta
+            AgregarIntegranteHorario(horarioId - 1, 71); // Verzzali
+
+            AgregarHorario(17, 2, 1); // Estadística Aplicada
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarIntegranteHorario(horarioId - 1, 11); // Brussa
+
+            AgregarHorario(12, 2, 1); // Didáctica y Curriculum
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 8);
+            AgregarIntegranteHorario(horarioId - 1, 50); // Nasimbera
+
+            // Martes
+            AgregarHorario(13, 3, 1); // Psicología y Educación
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarIntegranteHorario(horarioId - 1, 13); // Bueno M.F.
+
+            AgregarHorario(16, 3, 1); // Derecho I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferri
+
+            AgregarHorario(17, 2, 1); // Estadística Aplicada
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 11); // Brussa
+
+            // Miércoles
+            AgregarHorario(14, 4, 1); // Economía II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Buceta
+
+            AgregarHorario(16, 2, 1); // Derecho I
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 4);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferri
+
+            AgregarHorario(15, 2, 1); // SIC II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            // Jueves
+            AgregarHorario(14, 2, 1); // Economía II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Buceta
+
+            AgregarHorario(15, 2, 1); // SIC II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 4);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            AgregarHorario(18, 3, 1); // Didáctica Específica
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 8);
+            AgregarIntegranteHorario(horarioId - 1, 14); // Cainero
+
+            // Viernes
+            AgregarHorario(12, 2, 1); // Didáctica y Curriculum
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarIntegranteHorario(horarioId - 1, 28); // Ferreyra
+
+            AgregarHorario(13, 2, 1); // Psicología y Educación
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            AgregarIntegranteHorario(horarioId - 1, 13); // Bueno M.F.
+
+            AgregarHorario(11, 3, 1); // Instituciones Educativas
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 8);
+            AgregarIntegranteHorario(horarioId - 1, 27); // Espru
+
+            // Agregar recreos
+            AgregarHorario(265, 1, 1); // Recreo
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 5);
+
+            // 3er año Profesorado de Economía
+
+            // Lunes
+            AgregarHorario(22, 3, 1); // Metodología de la Investigación
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            AgregarHorario(28, 3, 1); // Didáctica Específica
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 12); // Buceta
+
+            // Martes
+            AgregarHorario(25, 2, 1); // Derecho II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferri
+
+            AgregarHorario(27, 3, 1); // Práctica Docente III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarIntegranteHorario(horarioId - 1, 14); // Cainero
+            AgregarIntegranteHorario(horarioId - 1, 71); // Verzzali
+
+            AgregarHorario(26, 2, 1); // Sujetos de la Educación Secundaria
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 8);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Vigniatti
+
+            // Miércoles
+            AgregarHorario(21, 3, 1); // Filosofía
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            AgregarHorario(23, 2, 1); // Economía III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarIntegranteHorario(horarioId - 1, 14); // Cainero
+
+            AgregarHorario(25, 2, 1); // Derecho II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 8);
+            AgregarIntegranteHorario(horarioId - 1, 30); // Ferri
+
+            // Jueves
+            AgregarHorario(28, 2, 1); // Producción de Recursos
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria
+
+            AgregarHorario(23, 2, 1); // Economía III
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 4);
+            AgregarIntegranteHorario(horarioId - 1, 14); // Cainero
+
+            AgregarHorario(20, 3, 1); // Historia y Política Educativa
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 7);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 8);
+            AgregarIntegranteHorario(horarioId - 1, 27); // Espru
+
+            // Viernes
+            AgregarHorario(26, 2, 1); // Sujetos de la Educación Secundaria
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarIntegranteHorario(horarioId - 1, 72); // Vigniatti
+
+            AgregarHorario(24, 3, 1); // Finanzas Públicas
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 6);
+            AgregarIntegranteHorario(horarioId - 1, 62); // Rosso
+
+            // Agregar recreos
+            AgregarHorario(266, 1, 1); // Recreo
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 5);
+            // 4to año Profesorado de Economía
+
+            // Lunes
+            AgregarHorario(34, 3, 1); // Práctica de Investigación
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 36); // Gretter
+            AgregarIntegranteHorario(horarioId - 1, 23); // Della Rosa
+
+            AgregarHorario(29, 3, 1); // Ética y Trabajo Docente
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 39); // Imperiale
+
+            // Martes
+            AgregarHorario(33, 2, 1); // Economía Argentina Latino e Inter
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 2);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            AgregarHorario(36, 3, 1); // Producción de Recursos II
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 3);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 6);
+            AgregarIntegranteHorario(horarioId - 1, 23); // Della Rosa
+
+            // Miércoles
+            AgregarHorario(31, 3, 1); // Comunicación Social
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 3);
+            AgregarIntegranteHorario(horarioId - 1, 31); // Gaido
+
+            AgregarHorario(35, 3, 1); // Práctica Docente IV
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 7);
+            AgregarIntegranteHorario(horarioId - 1, 27); // Espru
+            AgregarIntegranteHorario(horarioId - 1, 60); // Renteria
+
+            // Jueves
+            AgregarHorario(37, 3, 1); // UDI
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 3);
+            AgregarIntegranteHorario(horarioId - 1, 64); // Sandoval
+
+            AgregarHorario(30, 3, 1); // ESI
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 7);
+            AgregarIntegranteHorario(horarioId - 1, 71); // Verzzali
+
+            // Viernes
+            AgregarHorario(33, 2, 1); // Economía Argentina Latino e Inter
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 2);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 3);
+            AgregarIntegranteHorario(horarioId - 1, 2); // Aimar
+
+            AgregarHorario(32, 3, 1); // Economía Social y Sostenible
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 4);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 6);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 7);
+            AgregarIntegranteHorario(horarioId - 1, 74); // Ruiz
+
+            // Agregar recreos
+            AgregarHorario(267, 1, 1); // Recreo
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 5);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 5);
+            #endregion
+            #region inicial
+            // 1er año Profesorado de Educación Inicial
+
+            // Taller de Práctica I
+            AgregarHorario(10, 3, 1);
+            AgregarDetalleHorario(1, DiaEnum.Lunes, 6);
+            AgregarDetalleHorario(1, DiaEnum.Lunes, 7);
+            AgregarDetalleHorario(1, DiaEnum.Lunes, 8);
+            AgregarDetalleHorario(1, DiaEnum.Miércoles, 16);
+            AgregarDetalleHorario(1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(1, DiaEnum.Miércoles, 18);
+            AgregarIntegranteHorario(1, 72); // Vignatti, E.
+
+            // Comunicación y Expresión Oral y Escrita
+            AgregarHorario(188, 6, 1);
+            AgregarDetalleHorario(2, DiaEnum.Lunes, 10);
+            AgregarDetalleHorario(2, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(2, DiaEnum.Lunes, 12);
+            AgregarDetalleHorario(2, DiaEnum.Jueves, 10);
+            AgregarDetalleHorario(2, DiaEnum.Jueves, 11);
+            AgregarDetalleHorario(2, DiaEnum.Jueves, 12);
+            AgregarIntegranteHorario(2, 31); // Gaido, J.P.
+
+            // Psicología y Educación
+            AgregarHorario(179, 4, 1);
+            AgregarDetalleHorario(3, DiaEnum.Martes, 10);
+            AgregarDetalleHorario(3, DiaEnum.Martes, 11);
+            AgregarDetalleHorario(3, DiaEnum.Viernes, 12);
+            AgregarDetalleHorario(3, DiaEnum.Viernes, 13);
+            AgregarIntegranteHorario(3, 10); // Brondino, D.
+
+            // Pedagogía
+            AgregarHorario(180, 4, 1);
+            AgregarDetalleHorario(4, DiaEnum.Miércoles, 10);
+            AgregarDetalleHorario(4, DiaEnum.Miércoles, 11);
+            AgregarDetalleHorario(4, DiaEnum.Miércoles, 12);
+            AgregarDetalleHorario(4, DiaEnum.Miércoles, 13);
+            AgregarIntegranteHorario(4, 49); // Monzón, M.C.
+
+            // Problemática Contemporánea de la Educación Inicial I
+            AgregarHorario(186, 3, 1);
+            AgregarDetalleHorario(5, DiaEnum.Jueves, 10);
+            AgregarDetalleHorario(5, DiaEnum.Jueves, 11);
+            AgregarDetalleHorario(5, DiaEnum.Jueves, 12);
+            AgregarIntegranteHorario(5, 43); // Manattini, S.
+
+            // Movimiento y Cuerpo
+            AgregarHorario(181, 3, 1);
+            AgregarDetalleHorario(6, DiaEnum.Viernes, 10);
+            AgregarDetalleHorario(6, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(6, DiaEnum.Martes, 12);
+            AgregarDetalleHorario(6, DiaEnum.Martes, 13);
+            AgregarIntegranteHorario(6, 65); // Sancho, I.
+
+            // Historia Argentina y Latinoamericana - Ambiente y Sociedad
+            AgregarHorario(182, 3, 1);
+            AgregarDetalleHorario(7, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(7, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(7, DiaEnum.Lunes, 17);
+            AgregarIntegranteHorario(7, 42); // Mancilla, J.
+            AgregarIntegranteHorario(7, 54); // Pereyra, S.
+
+            // Área Estético-Expresiva
+            AgregarHorario(189, 3, 1);
+            AgregarDetalleHorario(8, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(8, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(8, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(8, 68); // Tovar, C.
+            AgregarIntegranteHorario(8, 65); // Sancho, I.
+            AgregarIntegranteHorario(8, 19); // Corradi, R.
+
+            // Resolución de Problemas y Creatividad
+            AgregarHorario(187, 3, 1);
+            AgregarDetalleHorario(9, DiaEnum.Jueves, 15);
+            AgregarDetalleHorario(9, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(9, DiaEnum.Jueves, 17);
+            AgregarIntegranteHorario(9, 36); // Gretter, C.
+
+            // Sociología de la Educación
+            AgregarHorario(181, 2, 1);
+            AgregarDetalleHorario(10, DiaEnum.Viernes, 16);
+            AgregarDetalleHorario(10, DiaEnum.Viernes, 17);
+            AgregarIntegranteHorario(10, 73); // Villa, M.F.
+
+            // Recreos
+            AgregarHorario(264, 1, 1);
+            AgregarDetalleHorario(11, DiaEnum.Lunes, 14);
+            AgregarDetalleHorario(11, DiaEnum.Martes, 14);
+            AgregarDetalleHorario(11, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(11, DiaEnum.Jueves, 14);
+            AgregarDetalleHorario(11, DiaEnum.Viernes, 14);
+            // 2do año Profesorado de Educación Inicial
+
+            // Ciencias Naturales y su Didáctica
+            AgregarHorario(201, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarIntegranteHorario(horarioId - 1, 54);
+
+            // Taller de Práctica II
+            AgregarHorario(196, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 13);
+            AgregarIntegranteHorario(horarioId - 1, 72);
+
+            // Literatura y su Didáctica
+            AgregarHorario(200, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 62);
+
+            // Didáctica de la Educación Inicial I
+            AgregarHorario(198, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 10);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 16);
+            AgregarIntegranteHorario(horarioId - 1, 49);
+
+            // Didáctica General
+            AgregarHorario(192, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 15);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 11);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 12);
+            AgregarIntegranteHorario(horarioId - 1, 40);
+
+            // Matemática y su Didáctica
+            AgregarHorario(199, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 13);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 12);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 13);
+            AgregarIntegranteHorario(horarioId - 1, 44);
+
+            // Sujeto de la Educación Inicial
+            AgregarHorario(197, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarIntegranteHorario(horarioId - 1, 40);
+
+            // Movimiento y Cuerpo II
+            AgregarHorario(195, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarIntegranteHorario(horarioId - 1, 65);
+
+            // Filosofía de la Educación
+            AgregarHorario(193, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 19);
+            AgregarIntegranteHorario(horarioId - 1, 28);
+
+            // Recreo
+            AgregarHorario(265, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 14);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 14);
+            // 3er año Profesorado de Educación Inicial
+
+            // Taller de Práctica III
+            AgregarHorario(206, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 73);
+            AgregarIntegranteHorario(horarioId - 1, 52);
+
+            // Matemática y su Didáctica II
+            AgregarHorario(207, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 21);
+            AgregarIntegranteHorario(horarioId - 1, 44);
+
+            // Lengua y su Didáctica
+            AgregarHorario(208, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 16);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 21);
+            AgregarIntegranteHorario(horarioId - 1, 62);
+
+            // Didáctica de la Educación Inicial II
+            AgregarHorario(213, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 17);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 18);
+            AgregarIntegranteHorario(horarioId - 1, 72);
+            AgregarIntegranteHorario(horarioId - 1, 41);
+
+            // Área Estético-Expresiva II
+            AgregarHorario(211, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 20);
+            AgregarIntegranteHorario(horarioId - 1, 68);
+            AgregarIntegranteHorario(horarioId - 1, 65);
+            AgregarIntegranteHorario(horarioId - 1, 19);
+
+            // Historia Social de la Educación y Política Educativa Argentina
+            AgregarHorario(205, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 18);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 20);
+            AgregarIntegranteHorario(horarioId - 1, 28);
+
+            // EDI I
+            AgregarHorario(214, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 19);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 20);
+            AgregarIntegranteHorario(horarioId - 1, 70);
+
+            // Ciencias Sociales y su Didáctica
+            AgregarHorario(210, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 22);
+            AgregarIntegranteHorario(horarioId - 1, 42);
+
+            // Tecnologías de la Información
+            AgregarHorario(204, 4, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 20);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 22);
+            AgregarIntegranteHorario(horarioId - 1, 21);
+
+            // Recreo
+            AgregarHorario(284, 1, 1);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Lunes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Martes, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Miércoles, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Jueves, 21);
+            AgregarDetalleHorario(horarioId - 1, DiaEnum.Viernes, 21);
+            // 4to año Profesorado de Educación Inicial
+
+            // ESI (Educación Sexual Integral)
+            AgregarHorario(254, 4, 1);
+            AgregarDetalleHorario(12, DiaEnum.Lunes, 18);
+            AgregarDetalleHorario(12, DiaEnum.Lunes, 19);
+            AgregarDetalleHorario(12, DiaEnum.Lunes, 20);
+            AgregarDetalleHorario(12, DiaEnum.Lunes, 22);
+            AgregarIntegranteHorario(12, 54); // Pereyra, S.
+
+            // Taller de Práctica IV
+            AgregarHorario(261, 6, 1);
+            AgregarDetalleHorario(13, DiaEnum.Martes, 19);
+            AgregarDetalleHorario(13, DiaEnum.Martes, 20);
+            AgregarDetalleHorario(13, DiaEnum.Martes, 22);
+            AgregarDetalleHorario(13, DiaEnum.Jueves, 19);
+            AgregarDetalleHorario(13, DiaEnum.Jueves, 20);
+            AgregarDetalleHorario(13, DiaEnum.Jueves, 22);
+            AgregarIntegranteHorario(13, 50); // Nasimbera, R.
+            AgregarIntegranteHorario(13, 52); // Paredes, M.
+
+            // Ética - Trabajo Docente - Derechos Humanos y Ciudadanos
+            AgregarHorario(254, 3, 1);
+            AgregarDetalleHorario(14, DiaEnum.Miércoles, 18);
+            AgregarDetalleHorario(14, DiaEnum.Miércoles, 19);
+            AgregarDetalleHorario(14, DiaEnum.Miércoles, 20);
+            AgregarIntegranteHorario(14, 28); // Ferreyra, M.
+
+            // Taller de Práctica IV y Ateneo
+            AgregarHorario(261, 3, 1);
+            AgregarDetalleHorario(15, DiaEnum.Jueves, 19);
+            AgregarDetalleHorario(15, DiaEnum.Jueves, 20);
+            AgregarDetalleHorario(15, DiaEnum.Jueves, 22);
+            AgregarIntegranteHorario(15, 50); // Nasimbera, R.
+            AgregarIntegranteHorario(15, 52); // Paredes, M.
+            AgregarIntegranteHorario(15, 54); // Pereyra, S.
+            AgregarIntegranteHorario(15, 11); // Brussa, G.
+            AgregarIntegranteHorario(15, 42); // Mancilla, J.
+            AgregarIntegranteHorario(15, 70); // Tregnaghi, C.
+
+            // Recreo
+            AgregarHorario(291, 1, 1);
+            AgregarDetalleHorario(16, DiaEnum.Lunes, 21);
+            AgregarDetalleHorario(16, DiaEnum.Martes, 21);
+            AgregarDetalleHorario(16, DiaEnum.Miércoles, 21);
+            AgregarDetalleHorario(16, DiaEnum.Jueves, 21);
+            AgregarDetalleHorario(16, DiaEnum.Viernes, 21);
+
+            modelBuilder.Entity<Horario>().HasData(horarios);
+            modelBuilder.Entity<DetalleHorario>().HasData(detallesHorario);
+            modelBuilder.Entity<IntegranteHorario>().HasData(integrantesHorario);
             #endregion
             #region datos semillas InscriptoCarrera
             var inscriptoCarrera = new InscriptoCarrera { Id = 1, AlumnoId = 1, CarreraId = 1 };
