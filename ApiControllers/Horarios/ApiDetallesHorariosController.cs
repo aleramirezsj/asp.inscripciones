@@ -27,19 +27,48 @@ namespace Inscripciones.ApiControllers.Horarios
         {
             if (idAnioCarrera != null && idCicloLectivo != null)
             {
-                return await _context.detalleshorarios.Include(d => d.Hora).Include(d => d.Horario).ThenInclude(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(d => d.Horario.Materia.AnioCarreraId.Equals(idAnioCarrera) && d.Horario.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                return await _context.detalleshorarios
+                    .Include(d => d.Hora)
+                    .Include(d => d.Horario)
+                        .ThenInclude(h => h.Materia)
+                            .ThenInclude(m => m.AnioCarrera)
+                                .ThenInclude(a => a.Carrera)
+                    .Include(d => d.Horario)
+                        .ThenInclude(h => h.IntegrantesHorario)
+                            .ThenInclude(i => i.Docente)
+                    .Where(d => d.Horario.Materia.AnioCarreraId.Equals(idAnioCarrera) 
+                        && d.Horario.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
             }
             else
             {
                 if (idCarrera != null && idCicloLectivo != null)
                 {
-                    return await _context.detalleshorarios.Include(d => d.Hora).Include(d => d.Horario).ThenInclude(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(d => d.Horario.Materia.AnioCarrera.CarreraId.Equals(idCarrera) && d.Horario.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                    return await _context.detalleshorarios
+                        .Include(d => d.Hora)
+                        .Include(d => d.Horario)
+                            .ThenInclude(h => h.Materia)
+                                .ThenInclude(m => m.AnioCarrera)
+                                    .ThenInclude(a => a.Carrera)
+                        .Include(d => d.Horario)
+                            .ThenInclude(h => h.IntegrantesHorario)
+                                .ThenInclude(i => i.Docente)
+                        .Where(d => d.Horario.Materia.AnioCarrera.CarreraId.Equals(idCarrera) 
+                            && d.Horario.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
                 }
                 else
                 {
                     if (idCicloLectivo != null)
                     {
-                        return await _context.detalleshorarios.Include(d => d.Hora).Include(d => d.Horario).ThenInclude(h => h.Materia).ThenInclude(m => m.AnioCarrera).ThenInclude(a => a.Carrera).Where(d =>d.Horario.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
+                        return await _context.detalleshorarios
+                            .Include(d => d.Hora)
+                            .Include(d => d.Horario)
+                                .ThenInclude(h => h.Materia)
+                                    .ThenInclude(m => m.AnioCarrera)
+                                        .ThenInclude(a => a.Carrera)
+                            .Include(d => d.Horario)
+                                .ThenInclude(h => h.IntegrantesHorario)
+                                    .ThenInclude(i => i.Docente)
+                            .Where(d =>d.Horario.CicloLectivoId.Equals(idCicloLectivo)).ToListAsync();
                     }
                 }
             }
