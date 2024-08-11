@@ -11,6 +11,8 @@ namespace Inscripciones.Models.Horarios
         public int? CicloLectivoId { get; set; }
         public CicloLectivo? CicloLectivo { get; set; }
 
+        public ICollection<DetalleHorario> DetallesHorario { get; set; }
+
         public ICollection<IntegranteHorario> IntegrantesHorario { get; set; }
 
         public override string ToString()
