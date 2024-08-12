@@ -98,7 +98,8 @@ namespace Inscripciones.ApiControllers.MesasExamenes
                 return NotFound();
             }
 
-            _context.mesasexamenes.Remove(mesaExamen);
+            mesaExamen.Eliminado = true;
+            _context.mesasexamenes.Update(mesaExamen);
             await _context.SaveChangesAsync();
 
             return NoContent();

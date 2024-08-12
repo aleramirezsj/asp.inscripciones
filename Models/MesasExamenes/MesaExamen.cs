@@ -10,6 +10,8 @@
         public string Horario { get; set; } = string.Empty;
         public int TurnoExamenId { get; set; }
         public TurnoExamen? TurnoExamen { get; set; }
+        public bool Eliminado { get; set; } = false;
+
 
         public ICollection<DetalleMesaExamen> DetallesMesaExamen { get; set; }
 

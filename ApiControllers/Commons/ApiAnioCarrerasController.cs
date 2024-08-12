@@ -96,8 +96,8 @@ namespace Inscripciones.ApiControllers.Commons
             {
                 return NotFound();
             }
-
-            _context.anioscarreras.Remove(anioCarrera);
+            anioCarrera.Eliminado=true;
+            _context.anioscarreras.Update(anioCarrera);
             await _context.SaveChangesAsync();
 
             return NoContent();

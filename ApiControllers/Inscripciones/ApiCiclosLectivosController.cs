@@ -93,8 +93,8 @@ namespace Inscripciones.ApiControllers.Inscripciones
             {
                 return NotFound();
             }
-
-            _context.cicloslectivos.Remove(cicloLectivo);
+            cicloLectivo.Eliminado=true;
+            _context.cicloslectivos.Update(cicloLectivo);
             await _context.SaveChangesAsync();
 
             return NoContent();

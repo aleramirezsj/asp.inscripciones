@@ -141,7 +141,8 @@ namespace Inscripciones.ApiControllers.Horarios
                 return NotFound();
             }
 
-            _context.detalleshorarios.Remove(detalleHorario);
+            detalleHorario.Eliminado=true;
+            _context.detalleshorarios.Update(detalleHorario);
             await _context.SaveChangesAsync();
 
             return NoContent();

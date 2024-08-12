@@ -94,7 +94,8 @@ namespace Inscripciones.ApiControllers.Horarios
                 return NotFound();
             }
 
-            _context.integranteshorarios.Remove(integranteHorario);
+            integranteHorario.Eliminado = true;
+            _context.integranteshorarios.Update(integranteHorario);
             await _context.SaveChangesAsync();
 
             return NoContent();

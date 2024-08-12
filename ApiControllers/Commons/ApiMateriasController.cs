@@ -97,7 +97,8 @@ namespace Inscripciones.ApiControllers.Commons
                 return NotFound();
             }
 
-            _context.materias.Remove(materia);
+            materia.Eliminado = true;
+            _context.materias.Update(materia);
             await _context.SaveChangesAsync();
 
             return NoContent();

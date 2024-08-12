@@ -10,6 +10,8 @@
         public Alumno? Alumno { get; set; } = null;
         public int? DocenteId { get; set; }
         public Docente? Docente { get; set; }
+        public bool Eliminado { get; set; } = false;
+
 
         public override string ToString()
         {

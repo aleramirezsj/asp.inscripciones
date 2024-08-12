@@ -11,6 +11,8 @@ namespace Inscripciones.Models
         public int AnioCarreraId { get; set; }
         [Display(Name = "Año carrera")]
         public AnioCarrera? AnioCarrera { get; set; }
+        public bool Eliminado { get; set; } = false;
+
 
         public override string ToString()
         {

@@ -98,7 +98,8 @@ namespace Inscripciones.ApiControllers.Inscripciones
                 return NotFound();
             }
 
-            _context.detallesinscripciones.Remove(detalleInscripcion);
+            detalleInscripcion.Eliminado = true;
+            _context.detallesinscripciones.Update(detalleInscripcion);
             await _context.SaveChangesAsync();
 
             return NoContent();

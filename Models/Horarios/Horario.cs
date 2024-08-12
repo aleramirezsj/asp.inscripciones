@@ -10,6 +10,8 @@ namespace Inscripciones.Models.Horarios
         public int CantidadHoras { get; set; } = 0;
         public int? CicloLectivoId { get; set; }
         public CicloLectivo? CicloLectivo { get; set; }
+        public bool Eliminado { get; set; } = false;
+
 
         public ICollection<DetalleHorario> DetallesHorario { get; set; }
 
